@@ -1,0 +1,121 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-rotary-red: var(--rotary-red);
+  --color-rotary-red-dark: var(--rotary-red-dark);
+  --color-rotary-gold: var(--rotary-gold);
+  --color-rotary-gold-dark: var(--rotary-gold-dark);
+  --color-cream: var(--cream);
+  --color-cream-foreground: var(--cream-foreground);
+  --color-charcoal: var(--charcoal);
+  --color-charcoal-foreground: var(--charcoal-foreground);
+
+  --font-display: var(--font-display-family);
+  --font-sans: var(--font-sans-family);
+}
+
+:root {
+  --radius: 0.375rem;
+  --font-display-family: "Bebas Neue", "Archivo Black", sans-serif;
+  --font-sans-family: "Barlow", "Source Sans 3", sans-serif;
+
+  --rotary-red: oklch(0.567 0.224 27.3);
+  --rotary-red-dark: oklch(0.46 0.19 27.3);
+  --rotary-gold: oklch(0.78 0.157 72);
+  --rotary-gold-dark: oklch(0.6 0.13 65);
+  --cream: oklch(0.942 0.015 90);
+  --white: oklch(0.942 0.015 90);
+  --cream-foreground: oklch(0.21 0.005 60);
+  --charcoal: oklch(0.21 0.005 260);
+  --charcoal-foreground: oklch(0.97 0.005 90);
+
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.21 0.005 260);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.21 0.005 260);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.21 0.005 260);
+  --primary: oklch(0.567 0.224 27.3);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.78 0.157 72);
+  --secondary-foreground: oklch(0.21 0.005 260);
+  --muted: oklch(0.942 0.015 90);
+  --muted-foreground: oklch(0.44 0.01 60);
+  --accent: oklch(85.201% 0.12374 77.865);
+  --accent-foreground: oklch(0.21 0.005 260);
+  --destructive: oklch(0.567 0.224 27.3);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.9 0.008 80);
+  --input: oklch(0.9 0.008 80);
+  --ring: oklch(0.567 0.224 27.3);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans-family);
+  }
+
+  h1,
+  h2,
+  h3,
+  .font-display {
+    font-family: var(--font-display-family);
+    letter-spacing: 0.02em;
+  }
+}
+
+@utility text-balance {
+  text-wrap: balance;
+}
+
+@utility halftone {
+  background-image: radial-gradient(
+    color-mix(in oklab, var(--color-charcoal) 22%, transparent) 1px,
+    transparent 1px
+  );
+  background-size: 6px 6px;
+}
+
+@utility poster-stripes {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    color-mix(in oklab, var(--color-rotary-gold) 14%, transparent) 0 2px,
+    transparent 2px 14px
+  );
+}
