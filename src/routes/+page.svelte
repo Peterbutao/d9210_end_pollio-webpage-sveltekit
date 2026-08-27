@@ -17,7 +17,7 @@
 
   const volunteersImages = [
     { src: "/VOL.jpg", alt: "Rotary volunteers in red vests carrying vaccine carriers along a dusty road at sunset" },
-    { src: "/images/volunteers.jpg", alt: "Health workers vaccinating children at an outdoor immunization day" },
+    { src: "/NEW.jpg", alt: "Health workers vaccinating children at an outdoor immunization day" },
     { src: "/VAC.jpg", alt: "Polio vaccination outreach in the field" },
   ];
   let volunteersIndex = $state(0);
@@ -258,7 +258,7 @@
         alt=""
         width="900"
         height="900"
-        class="h-[min(145vw,900px)] w-[min(145vw,900px)] select-none object-contain opacity-15 will-change-transform"
+        class="h-[min(145vw,900px)] w-[min(145vw,900px)] select-none object-contain opacity-30 will-change-transform"
         style="transform: rotate(0deg)"
       />
     </div>
@@ -269,7 +269,7 @@
         alt=""
         width="900"
         height="900"
-        class="h-[min(145vw,900px)] w-[min(145vw,900px)] select-none object-contain opacity-15 will-change-transform"
+        class="h-[min(145vw,900px)] w-[min(145vw,900px)] select-none object-contain opacity-30 will-change-transform"
         style="transform: rotate(0deg)"
       />
     </div>
@@ -494,8 +494,27 @@
           </a>
         </div>
       </div>
-      <div class="max-w-120 mt-10 lg:mt-14">
-        <Map />
+      <!-- Map + desktop-only side image with caption -->
+      <div class="mt-10 grid gap-8 lg:mt-14 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
+        <div class="mx-auto w-full max-w-[520px] lg:mx-0">
+          <Map />
+        </div>
+        <!-- Visible on desktop only (lg+) — occupies right of map, reduced height to fit cursive caption -->
+        <figure class="hidden flex-col gap-3 lg:flex">
+          <div class="overflow-hidden rounded-sm shadow-xl">
+            <img
+              src="/NEW.jpg"
+              alt="Rotary volunteers administering polio vaccine to children during an immunization campaign"
+              width="800"
+              height="600"
+              loading="lazy"
+              class="h-[340px] w-full object-cover lg:h-[380px]"
+            />
+          </div>
+          <figcaption class="text-lg leading-relaxed font-medium tracking-wide text-white lg:text-xl [font-family:'Dancing_Script',cursive]">
+            Every child reached, every drop counts — District 9210 volunteers on the frontline of eradication.
+          </figcaption>
+        </figure>
       </div>
     </div>
   </section>
