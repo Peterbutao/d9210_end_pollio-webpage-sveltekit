@@ -17,7 +17,7 @@
 
   const volunteersImages = [
     { src: "/VOL.jpg", alt: "Rotary volunteers in red vests carrying vaccine carriers along a dusty road at sunset" },
-    { src: "/NEW.jpg", alt: "Health workers vaccinating children at an outdoor immunization day" },
+    { src: "/D9210.jpg", alt: "Health workers vaccinating children at an outdoor immunization day" },
     { src: "/VAC.jpg", alt: "Polio vaccination outreach in the field" },
   ];
   let volunteersIndex = $state(0);
@@ -127,38 +127,198 @@
     Chart.defaults.font.size = window.matchMedia("(max-width: 640px)").matches ? 10 : 12;
 
     if (coverageCanvas) {
-      charts.push(
-        new Chart(coverageCanvas, {
-          type: "bar",
-          data: {
-            labels: ["Malawi", "Zambia", "Zimbabwe", "N. Mozambique"],
-            datasets: [
-              {
-                label: "Vaccination coverage (%)",
-                data: [
-                  latestCoverage.Malawi,
-                  latestCoverage.Zambia,
-                  latestCoverage.Zimbabwe,
-                  latestCoverage.Mozambique,
-                ],
-                backgroundColor: ["#EE1C25", "#F7A81B", "#EE1C25", "#F7A81B"],
-                borderRadius: 8,
+      // flags for each bar — w80 png from flagcdn (mw,mz,zm,zw) — drawn on top of bars + emoji in labels
+      const flagCodes = ["mw", "zm", "zw", "mz"] as const;
+      const flagSrcs = flagCodes.map((c) => `https://flagcdn.com/w80/${c}.png`);
+      const flagImages = flagSrcs.map((src) => {
+        const img = new Image();
+        img.crossOrigin = "anonymous";
+        img.src = src;
+        return img;
+      });
+
+      const flagBarPlugin = {
+        id: "flagBars",
+        afterDatasetsDraw(chart: Chart) {
+          const ctx = chart.ctx as CanvasRenderingContext2D;
+          const meta = chart.getDatasetMeta(0);
+          // roundRect fallback for older canvas
+          const roundRect = (x: number, y: number, w: number, h: number, r: number) => {
+            if ((ctx as any).roundRect) {
+              (ctx as any).roundRect(x, y, w, h, r);
+            } else {
+              ctx.moveTo(x + r, y);
+              ctx.arcTo(x + w, y, x + w, y + h, r);
+              ctx.arcTo(x + w, y + h, x, y + h, r);
+              ctx.arcTo(x, y + h, x, y, r);
+              ctx.arcTo(x, y, x + w, y, r);
+              ctx.closePath();
+            }
+          };
+          meta.data.forEach((bar: any, i: number) => {
+            const img = flagImages[i];
+            if (!img || !img.complete || !img.naturalWidth) return;
+            const { x, y, base, width } = bar.getProps(["x", "y", "base", "width"], true) as {
+              x: number;
+              y: number;
+              base: number;
+              width: number;
+            };
+            const barH = base - y;
+            if (barH < 24) return;
+            const isMobile = (chart.width ?? 400) < 420;
+            // flag badge size scales with bar width
+            const flagW = Math.max(22, Math.min(width * 0.72, isMobile ? 30 : 44));
+            const flagH = flagW * 0.66; // flag aspect ~3:2
+            const flagX = x - flagW / 2;
+            // sit ~6px below top inset so borderRadius still visible, centered vertically if bar very short
+            const flagY = y + Math.min(8, barH * 0.12);
+            // drop shadow under flag for readability on colored bars
+            ctx.save();
+            ctx.shadowColor = "rgba(0,0,0,0.22)";
+            ctx.shadowBlur = 4;
+            ctx.shadowOffsetY = 1;
+            ctx.beginPath();
+            roundRect(flagX, flagY, flagW, flagH, 4);
+            ctx.fillStyle = "white";
+            ctx.fill();
+            ctx.restore();
+
+            ctx.save();
+            ctx.beginPath();
+            roundRect(flagX, flagY, flagW, flagH, 4);
+            ctx.clip();
+            // cover-style draw: keep aspect, center crop
+            const imgRatio = img.naturalWidth / img.naturalHeight;
+            const boxRatio = flagW / flagH;
+            let dw = flagW,
+              dh = flagH,
+              dx = flagX,
+              dy = flagY;
+            if (imgRatio > boxRatio) {
+              dh = flagH;
+              dw = dh * imgRatio;
+              dx = flagX - (dw - flagW) / 2;
+            } else {
+              dw = flagW;
+              dh = dw / imgRatio;
+              dy = flagY - (dh - flagH) / 2;
+            }
+            ctx.drawImage(img, dx, dy, dw, dh);
+            ctx.restore();
+
+            ctx.save();
+            ctx.strokeStyle = "rgba(255,255,255,0.95)";
+            ctx.lineWidth = 1.4;
+            ctx.beginPath();
+            roundRect(flagX, flagY, flagW, flagH, 4);
+            ctx.stroke();
+            ctx.restore();
+          });
+        },
+      };
+
+      const coverageChart = new Chart(coverageCanvas, {
+        type: "bar",
+        data: {
+          // emoji flags as fallback/text — plugin draws crisp raster flags on bars too
+          labels: ["\uD83C\uDDF2\uD83C\uDDFC Malawi", "\uD83C\uDDFF\uD83C\uDDF2 Zambia", "\uD83C\uDDFF\uD83C\uDDFC Zimbabwe", "\uD83C\uDDF2\uD83C\uDDFF N. Mozambique"],
+          datasets: [
+            {
+              label: "Vaccination coverage (%)",
+              data: [
+                latestCoverage.Malawi,
+                latestCoverage.Zambia,
+                latestCoverage.Zimbabwe,
+                latestCoverage.Mozambique,
+              ],
+              backgroundColor: ["#EE1C25", "#F7A81B", "#EE1C25", "#F7A81B"],
+              borderSkipped: false,
+              borderRadius: 8,
+              barPercentage: 0.68,
+              categoryPercentage: 0.78,
+            },
+          ],
+        },
+        // @ts-ignore plugin inline
+        plugins: [flagBarPlugin as any],
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                title: (items: any) => {
+                  const raw = ["Malawi", "Zambia", "Zimbabwe", "N. Mozambique"] as const;
+                  const idx = items[0]?.dataIndex ?? 0;
+                  const flags = ["\uD83C\uDDF2\uD83C\uDDFC", "\uD83C\uDDFF\uD83C\uDDF2", "\uD83C\uDDFF\uD83C\uDDFC", "\uD83C\uDDF2\uD83C\uDDFF"] as const;
+                  return `${flags[idx]} ${raw[idx]}`;
+                },
               },
-            ],
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: { legend: { display: false } },
-            scales: {
-              y: { beginAtZero: true, max: 100, grid: { color: gridColor } },
             },
           },
-        }),
-      );
+          scales: {
+            x: {
+              grid: { display: false },
+              ticks: { maxRotation: 0, autoSkip: false, padding: 6 },
+            },
+            y: { beginAtZero: true, max: 100, grid: { color: gridColor } },
+          },
+        },
+      });
+      // refresh once flags load (cached usually instant)
+      let loaded = 0;
+      flagImages.forEach((img) => {
+        if (img.complete) loaded++;
+        else
+          img.addEventListener("load", () => {
+            loaded++;
+            if (loaded === flagImages.length) coverageChart.update();
+            else coverageChart.draw();
+          });
+        img.addEventListener("error", () => {
+          // fallback to emoji only if CDN fails
+          coverageChart.update();
+        });
+      });
+      if (loaded === flagImages.length) coverageChart.update();
+      charts.push(coverageChart);
     }
 
     if (fundingCanvas) {
+      const fundingPct = Math.round((CAMPAIGN_STATS.fundsRaisedUsd / CAMPAIGN_STATS.fundsTargetUsd) * 100);
+      const fundingAmountStr = formatUsd(CAMPAIGN_STATS.fundsRaisedUsd);
+      const fundingTargetStr = formatUsd(CAMPAIGN_STATS.fundsTargetUsd);
+      const fundingCenterPlugin: any = {
+        id: "fundingCenter",
+        afterDraw(chart: Chart) {
+          const ctx = chart.ctx as CanvasRenderingContext2D;
+          const area = (chart as any).chartArea as { left: number; right: number; top: number; bottom: number; width: number } | undefined;
+          if (!area) return;
+          const cx = (area.left + area.right) / 2;
+          const cy = (area.top + area.bottom) / 2;
+          // offset slightly up to account for bottom legend taking space visually
+          const cyAdj = cy - 6;
+          const isSmall = area.width < 300;
+          ctx.save();
+          ctx.textAlign = "center";
+          ctx.textBaseline = "middle";
+          // Amount — large, bold
+          ctx.font = `800 ${isSmall ? "18px" : "22px"} Barlow, "Source Sans 3", sans-serif`;
+          ctx.fillStyle = "#1F2937";
+          ctx.fillText(fundingAmountStr, cx, cyAdj - (isSmall ? 10 : 14));
+          // Percent raised — gold accent
+          ctx.font = `700 ${isSmall ? "11px" : "13px"} Barlow, "Source Sans 3", sans-serif`;
+          ctx.fillStyle = "#D9971E";
+          ctx.fillText(`${fundingPct}% raised`, cx, cyAdj + (isSmall ? 7 : 8));
+          // Target — muted
+          ctx.font = `${isSmall ? "10px" : "11px"} Barlow, "Source Sans 3", sans-serif`;
+          ctx.fillStyle = "#6B7280";
+          ctx.fillText(`of ${fundingTargetStr} target`, cx, cyAdj + (isSmall ? 19 : 22));
+          ctx.restore();
+        },
+      };
       charts.push(
         new Chart(fundingCanvas, {
           type: "doughnut",
@@ -172,10 +332,12 @@
               },
             ],
           },
+          // @ts-ignore inline plugin
+          plugins: [fundingCenterPlugin],
           options: {
             responsive: true,
             maintainAspectRatio: false,
-            cutout: "70%",
+            cutout: "68%",
             plugins: {
               legend: { position: "bottom", labels: { padding: 20, usePointStyle: true } },
             },
@@ -256,9 +418,9 @@
         bind:this={heroLogoEl}
         src="/logo.png"
         alt=""
-        width="900"
-        height="900"
-        class="h-[min(145vw,900px)] w-[min(145vw,900px)] select-none object-contain opacity-30 will-change-transform"
+        width="500"
+        height="500"
+        class="h-[min(145vw,500px)] w-[min(145vw,500px)] select-none object-contain opacity-30 will-change-transform"
         style="transform: rotate(0deg)"
       />
     </div>
@@ -267,9 +429,9 @@
         bind:this={heroLogoBottomEl}
         src="/logo.png"
         alt=""
-        width="900"
-        height="900"
-        class="h-[min(145vw,900px)] w-[min(145vw,900px)] select-none object-contain opacity-30 will-change-transform"
+        width="500"
+        height="500"
+        class="h-[min(145vw,500px)] w-[min(145vw,500px)] select-none object-contain opacity-30 will-change-transform"
         style="transform: rotate(0deg)"
       />
     </div>
@@ -503,7 +665,7 @@
         <figure class="hidden flex-col gap-3 lg:flex">
           <div class="overflow-hidden rounded-sm shadow-xl">
             <img
-              src="/NEW.jpg"
+              src="/zambia.jpg"
               alt="Rotary volunteers administering polio vaccine to children during an immunization campaign"
               width="800"
               height="600"
@@ -733,7 +895,7 @@
         >
           <div class="relative h-48 shrink-0">
             <img
-              src="/images/volunteers.jpg"
+              src="/D9210.jpg"
               alt=""
               width="600"
               height="400"
@@ -873,20 +1035,6 @@
       transparent 1.2px
     ) !important;
     opacity: 0.55;
-  }
-
-  @keyframes hero-logo-spin {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }
-
-  .hero-logo {
-    animation: hero-logo-spin 8s linear infinite;
-   
   }
 
   @media (prefers-reduced-motion: reduce) {

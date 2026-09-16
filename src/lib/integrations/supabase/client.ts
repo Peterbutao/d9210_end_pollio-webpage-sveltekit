@@ -1,12 +1,18 @@
 import { createClient } from "@supabase/supabase-js";
-import { PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_PUBLISHABLE_KEY } from "$env/static/public";
+import * as envPublic from "$env/static/public";
 import type { Database } from "./types";
+
+// Support both naming schemes: new `PUBLISHABLE_KEY` (sb_publishable_...) and legacy `ANON_KEY`
+const PUBLIC_SUPABASE_URL = (envPublic as Record<string, string | undefined>).PUBLIC_SUPABASE_URL;
+const PUBLIC_SUPABASE_PUBLISHABLE_KEY =
+  (envPublic as Record<string, string | undefined>).PUBLIC_SUPABASE_PUBLISHABLE_KEY ??
+  (envPublic as Record<string, string | undefined>).PUBLIC_SUPABASE_ANON_KEY;
 
 function createSupabaseClient() {
   if (!PUBLIC_SUPABASE_URL || !PUBLIC_SUPABASE_PUBLISHABLE_KEY) {
     const missing = [
       ...(!PUBLIC_SUPABASE_URL ? ["PUBLIC_SUPABASE_URL"] : []),
-      ...(!PUBLIC_SUPABASE_PUBLISHABLE_KEY ? ["PUBLIC_SUPABASE_PUBLISHABLE_KEY"] : []),
+      ...(!PUBLIC_SUPABASE_PUBLISHABLE_KEY ? ["PUBLIC_SUPABASE_PUBLISHABLE_KEY (or PUBLIC_SUPABASE_ANON_KEY)"] : []),
     ];
     throw new Error(`Missing Supabase public env variable(s): ${missing.join(", ")}. Set them in your .env file.`);
   }
