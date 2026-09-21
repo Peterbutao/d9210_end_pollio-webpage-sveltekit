@@ -107,7 +107,10 @@
         <article
           class="flex items-start gap-4 rounded-sm border-l-4 border-rotary-gold bg-card p-5 shadow-sm transition-shadow hover:shadow-md"
         >
-          <img src="/logo.png" alt="" aria-hidden="true" class="mt-1 h-8 w-8 shrink-0 object-contain" width="32" height="32" />
+          <picture>
+            <source srcset="/logo.webp" type="image/webp" />
+            <img src="/logo.png" alt="" aria-hidden="true" class="mt-1 h-8 w-8 shrink-0 object-contain" width="32" height="32" decoding="async" loading="lazy" />
+          </picture>
           <div>
             <h2 class="font-display text-xl tracking-wide text-foreground">{club.name}</h2>
             <p class="mt-1 flex items-center gap-1 text-sm text-muted-foreground">

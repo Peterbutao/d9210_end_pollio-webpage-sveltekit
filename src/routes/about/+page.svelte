@@ -9,9 +9,9 @@
 
   const aboutImages = [
     // { src: "/images/volunteers.jpg", alt: "Health workers vaccinating children at an outdoor immunization day" },
-    // { src: "/VOL.jpg", alt: "Rotary volunteers in red vests carrying vaccine carriers at sunset" },
-    { src: "/VAC.jpg", alt: "Polio vaccination campaign in the field" },
-    // { src: "/hero-caro(2).jpg", alt: "District 9210 campaign field activity" },
+    // { src: "/VOL.webp", alt: "Rotary volunteers in red vests carrying vaccine carriers at sunset" },
+    { src: "/VAC.webp", alt: "Polio vaccination campaign in the field" },
+    // { src: "/hero-caro(2).webp", alt: "District 9210 campaign field activity" },
   ];
   const ABOUT_AUTOPLAY_MS = 3000;
   let aboutIndex = $state(0);

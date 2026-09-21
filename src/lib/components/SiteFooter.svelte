@@ -19,7 +19,10 @@
   <div class="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-3">
     <div>
       <div class="flex items-center gap-3">
-        <img src="/logo.png" alt="Rotary District 9210 logo" class="h-10 w-10 object-contain" width="40" height="40" />
+        <picture>
+          <source srcset="/logo.webp" type="image/webp" />
+          <img src="/logo.png" alt="Rotary District 9210 logo" class="h-10 w-10 object-contain" width="40" height="40" decoding="async" loading="lazy" />
+        </picture>
         <div class="leading-tight">
           <p class="font-display text-2xl tracking-wide">END POLIO NOW</p>
           <p class="text-xs uppercase tracking-[0.2em] text-rotary-gold">{DISTRICT.name}</p>

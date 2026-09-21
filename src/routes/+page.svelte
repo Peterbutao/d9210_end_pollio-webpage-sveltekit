@@ -20,15 +20,15 @@
   const homeMeta = ROUTES.find((r) => r.path === "/")!;
 
   const volunteersImages = [
-    { src: "/VOL.jpg", alt: "Rotary volunteers in red vests carrying vaccine carriers along a dusty road at sunset" },
-    { src: "/D9210.jpg", alt: "Health workers vaccinating children at an outdoor immunization day" },
-    { src: "/VAC.jpg", alt: "Polio vaccination outreach in the field" },
+    { src: "/VOL.webp", alt: "Rotary volunteers in red vests carrying vaccine carriers along a dusty road at sunset" },
+    { src: "/D9210.webp", alt: "Health workers vaccinating children at an outdoor immunization day" },
+    { src: "/VAC.webp", alt: "Polio vaccination outreach in the field" },
   ];
   let volunteersIndex = $state(0);
   let volunteersPaused = $state(false);
   let volunteersTimer = $state<ReturnType<typeof setTimeout>>();
 
-  const heroImages = ["/VAC.jpg"];
+  const heroImages = ["/VAC.webp"];
   const AUTOPLAY_MS = 3000;
   let heroIndex = $state(0);
   let heroPaused = $state(false);
@@ -434,7 +434,7 @@
     <div class="pointer-events-none fixed top-0 right-0 z-10 translate-x-1/2 -translate-y-1/2" aria-hidden="true">
       <img
         bind:this={heroLogoEl}
-        src="/logo.png"
+        src="/logo.webp"
         alt=""
         width="500"
         height="500"
@@ -445,7 +445,7 @@
     <div class="pointer-events-none fixed bottom-0 left-0 z-10 -translate-x-1/2 translate-y-1/2" aria-hidden="true">
       <img
         bind:this={heroLogoBottomEl}
-        src="/logo.png"
+        src="/logo.webp"
         alt=""
         width="500"
         height="500"
@@ -457,7 +457,7 @@
       <div>
         <div class="flex items-center gap-3">
           <img
-            src="/logo.png"
+            src="/logo.webp"
             alt="Rotary District 9210 logo"
             class="hero-logo h-20 w-20 object-contain sm:h-40 sm:w-40"
             width="96"
@@ -592,7 +592,7 @@
     aria-label="Campaign statistics"
     class="relative overflow-hidden border-b-4 border-rotary-red text-charcoal-foreground"
   >
-    <img src="/VAC.jpg" alt="" aria-hidden="true" class="absolute inset-0 h-full w-full object-cover" />
+    <img src="/VAC.webp" alt="" aria-hidden="true" class="absolute inset-0 h-full w-full object-cover" />
     <div class="absolute inset-0 bg-charcoal/85" aria-hidden="true"></div>
     <div class="relative mx-auto grid max-w-7xl grid-cols-2 gap-px lg:grid-cols-4">
       {#each HERO_STATS as s (s.label)}
@@ -683,7 +683,7 @@
         <figure class="hidden flex-col gap-3 lg:flex">
           <div class="overflow-hidden rounded-sm shadow-xl">
             <img
-              src="/zambia.jpg"
+              src="/zambia.webp"
               alt="Rotary volunteers administering polio vaccine to children during an immunization campaign"
               width="800"
               height="600"
@@ -737,7 +737,7 @@
                 height="340"
                 loading="lazy"
                 class="h-48 w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
-                onerror={(e) => ((e.currentTarget as HTMLImageElement).src = '/VAC.jpg')}
+                onerror={(e) => ((e.currentTarget as HTMLImageElement).src = '/VAC.webp')}
               />
             </a>
           {/if}
@@ -888,7 +888,7 @@
           class="flex flex-col overflow-hidden rounded-sm border-t-4 border-rotary-red bg-card shadow-md transition-transform hover:-translate-y-1"
         >
           <div class="relative h-48 shrink-0">
-            <img src="/VAC.jpg" alt="" width="600" height="400" loading="lazy" class="h-full w-full object-cover" />
+            <img src="/VAC.webp" alt="" width="600" height="400" loading="lazy" class="h-full w-full object-cover" />
             <div
               class="absolute -bottom-8 left-1/2 flex h-16 w-16 -translate-x-1/2 items-center justify-center rounded-full border-4 border-white bg-cream text-rotary-red shadow-lg"
             >
@@ -927,7 +927,7 @@
           class="flex flex-col overflow-hidden rounded-sm border-t-4 border-rotary-gold bg-card shadow-md transition-transform hover:-translate-y-1"
         >
           <div class="relative h-48 shrink-0">
-            <img src="/VOL.jpg" alt="" width="600" height="400" loading="lazy" class="h-full w-full object-cover" />
+            <img src="/VOL.webp" alt="" width="600" height="400" loading="lazy" class="h-full w-full object-cover" />
             <div
               class="absolute -bottom-8 left-1/2 flex h-16 w-16 -translate-x-1/2 items-center justify-center rounded-full border-4 border-white bg-cream text-rotary-red shadow-lg"
             >
@@ -966,7 +966,7 @@
         >
           <div class="relative h-48 shrink-0">
             <img
-              src="/D9210.jpg"
+              src="/D9210.webp"
               alt=""
               width="600"
               height="400"

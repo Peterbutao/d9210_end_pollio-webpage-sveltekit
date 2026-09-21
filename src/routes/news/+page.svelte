@@ -97,7 +97,7 @@
                   height="450"
                   loading="lazy"
                   class="h-56 w-full object-cover transition-transform duration-300 hover:scale-[1.02]"
-                  onerror={(e) => ((e.currentTarget as HTMLImageElement).src = '/VAC.jpg')}
+                  onerror={(e) => ((e.currentTarget as HTMLImageElement).src = '/VAC.webp')}
                 />
               </a>
             {/if}

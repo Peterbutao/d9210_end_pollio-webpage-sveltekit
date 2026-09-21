@@ -80,7 +80,7 @@ export const NEWS = [
     topic: "Immunization" as const,
     link:
       "https://www.afro.who.int/countries/malawi/photo-story/power-science-health-malawis-milestones-transforming-lives",
-    image: "/VAC.jpg",
+    image: "/VAC.webp",
   },
   {
     slug: "zambia-first-polio-round-april-2026",
@@ -118,7 +118,7 @@ export const NEWS = [
     topic: "Immunization" as const,
     link:
       "https://www.afro.who.int/photo-story/two-drops-confidence-communities-and-healthcare-professionals-join-forces-protect?country=Mozambique&name=Mozambique",
-    image: "/VOL.jpg",
+    image: "/VOL.webp",
   },
   {
     slug: "mozambique-polio-campaign-july-2026",
@@ -130,7 +130,7 @@ export const NEWS = [
     topic: "Awareness" as const,
     link:
       "https://www.afro.who.int/countries/mozambique/news",
-    image: "/D9210.jpg",
+    image: "/D9210.webp",
   },
   {
     slug: "zimbabwe-synchronized-polio-campaigns-2026",
@@ -155,7 +155,7 @@ export const NEWS = [
     topic: "Partnerships" as const,
     link:
       "https://www.afro.who.int/countries/zimbabwe/news/united-against-polio-zimbabwe-strengthens-regional-immunity-through-synchronized-vaccination",
-    image: "/zambia.jpg",
+    image: "/zambia.webp",
   },
 ] as const;
 

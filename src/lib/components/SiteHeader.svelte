@@ -19,7 +19,10 @@
 <header class="sticky top-0 z-50  bg-rotary-red text-primary-foreground">
   <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
     <a href="/" class="flex items-center gap-3" onclick={() => (open = false)}>
-      <img src="/endpoliologo.jpg" alt="Rotary District 9210 logo" class="h-12 w-12 shrink-0 object-contain border border-white sm:h-9 sm:w-9" width="48" height="48" />
+      <picture>
+        <source srcset="/endpoliologo.webp" type="image/webp" />
+        <img src="/endpoliologo.jpg" alt="Rotary District 9210 logo" class="h-12 w-12 shrink-0 object-contain border border-white sm:h-9 sm:w-9" width="48" height="48" decoding="async" />
+      </picture>
       <span class="leading-tight">
         <span class="block font-display text-xl tracking-wide">END POLIO NOW</span>
         <span class="block text-[11px] font-semibold uppercase tracking-[0.18em] text-rotary-gold">
