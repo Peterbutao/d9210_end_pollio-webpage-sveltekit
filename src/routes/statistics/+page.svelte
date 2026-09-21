@@ -5,6 +5,7 @@
     CAMPAIGN_STATS,
     CASES_BY_YEAR,
     COVERAGE_BY_YEAR,
+    DATA_SOURCES,
     DISTRICT,
     FUNDING_BY_YEAR,
     formatNumber,
@@ -174,6 +175,13 @@
         Wild and circulating vaccine-derived poliovirus cases confirmed in district countries. Zero cases reported
         district-wide since January 2025.
       </p>
+      <p class="mt-3 text-xs leading-relaxed text-muted-foreground">
+        Source:
+        {#each DATA_SOURCES.cases as s, i (s.url)}
+          <a href={s.url} target="_blank" rel="noopener noreferrer" class="font-semibold text-rotary-red hover:underline">{s.label}</a>{i < DATA_SOURCES.cases.length - 1 ? " · " : ""}
+        {/each}
+        — compiled with <a href="/contact" class="font-semibold text-rotary-red hover:underline">District 9210 reports</a>.
+      </p>
     </div>
   </section>
 
@@ -215,27 +223,34 @@
           Download CSV
         </button>
       </div>
-      <div class="mt-8 space-y-6">
+      <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {#each COUNTRIES as country, i (country)}
-          <div>
-            <p class="mb-2 text-sm font-bold uppercase tracking-wider text-foreground">{country}</p>
-            <div class="flex items-end gap-2">
+          <div class="flex flex-col">
+            <p class="mb-2.5 text-sm font-bold uppercase tracking-wider text-foreground">{country}</p>
+            <div class="flex flex-1 items-end justify-between gap-1 rounded-sm bg-muted/40 px-2 py-3 sm:gap-1.5 sm:px-3">
               {#each COVERAGE_BY_YEAR as row (row.year)}
                 {@const v = (row as any)[country] as number}
                 <div class="flex flex-1 flex-col items-center gap-1">
-                  <span class="text-xs font-bold text-muted-foreground">{v}%</span>
+                  <span class="text-[10px] font-bold leading-none text-muted-foreground sm:text-[11px]">{v}%</span>
                   <div
-                    class="w-full rounded-t-sm"
-                    style="height: {v * 1.4}px; background-color: {COUNTRY_COLORS[i]}"
+                    class="w-[14px] rounded-t-sm sm:w-5 lg:w-6 xl:w-7"
+                    style="height: {v * 1.2}px; background-color: {COUNTRY_COLORS[i]}"
                     title={`${country} ${row.year}: ${v}%`}
                   ></div>
-                  <span class="text-[10px] uppercase text-muted-foreground">{row.year}</span>
+                  <span class="text-[9px] font-medium uppercase tracking-wide text-muted-foreground sm:text-[10px]">{row.year}</span>
                 </div>
               {/each}
             </div>
           </div>
         {/each}
       </div>
+      <p class="mt-6 text-xs leading-relaxed text-muted-foreground">
+        Source:
+        {#each DATA_SOURCES.coverage as s, i (s.url)}
+          <a href={s.url} target="_blank" rel="noopener noreferrer" class="font-semibold text-rotary-red hover:underline">{s.label}</a>{i < DATA_SOURCES.coverage.length - 1 ? " · " : ""}
+        {/each}
+        · District-reported campaign coverage — see <a href="/contact" class="font-semibold text-rotary-red hover:underline">District 9210 reports</a> for household tally sheets.
+      </p>
     </div>
   </section>
 
@@ -301,6 +316,58 @@
       <p class="mt-6 text-sm text-charcoal-foreground/70">
         Every dollar is matched 2:1 by the Gates Foundation &mdash; your $100 becomes $300 for polio eradication.
       </p>
+      <p class="mt-3 text-xs leading-relaxed text-charcoal-foreground/60">
+        Source:
+        {#each DATA_SOURCES.funding as s, i (s.url)}
+          <a href={s.url} target="_blank" rel="noopener noreferrer" class="font-semibold text-rotary-gold hover:underline">{s.label}</a>{i < DATA_SOURCES.funding.length - 1 ? " · " : ""}
+        {/each}
+        · District 9210 finance / The Rotary Foundation PolioPlus Fund.
+      </p>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-4 pb-16 sm:px-6">
+    <div class="rounded-sm border border-border bg-card p-6 shadow-sm sm:p-8">
+      <p class="text-xs font-bold uppercase tracking-[0.2em] text-rotary-red">References & methodology</p>
+      <h2 class="mt-2 font-display text-3xl tracking-wide text-foreground">Where the numbers come from</h2>
+      <p class="mt-3 max-w-3xl text-sm leading-relaxed text-muted-foreground">
+        Statistics on this page are <span class="font-semibold text-foreground">district-reported figures</span> compiled by the District 9210 PolioPlus committee (last updated {formatStatDate(CAMPAIGN_STATS.lastUpdated)}). They are most useful alongside the authoritative global trackers below. For live case counts and national coverage, use the primary sources.
+      </p>
+      <div class="mt-8 grid gap-6 md:grid-cols-3">
+        <div>
+          <h3 class="font-display text-xl tracking-wide text-foreground">Polio cases</h3>
+          <ul class="mt-3 space-y-2 text-sm leading-relaxed">
+            {#each DATA_SOURCES.cases as s (s.url)}
+              <li><a href={s.url} target="_blank" rel="noopener noreferrer" class="font-medium text-rotary-red hover:underline">{s.label} ↗</a></li>
+            {/each}
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-display text-xl tracking-wide text-foreground">Immunization coverage</h3>
+          <ul class="mt-3 space-y-2 text-sm leading-relaxed">
+            {#each DATA_SOURCES.coverage as s (s.url)}
+              <li><a href={s.url} target="_blank" rel="noopener noreferrer" class="font-medium text-rotary-red hover:underline">{s.label} ↗</a></li>
+            {/each}
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-display text-xl tracking-wide text-foreground">Funding & campaign</h3>
+          <ul class="mt-3 space-y-2 text-sm leading-relaxed">
+            {#each [...DATA_SOURCES.funding, ...DATA_SOURCES.campaign] as s (s.url)}
+              <li><a href={s.url} target="_blank" rel="noopener noreferrer" class="font-medium text-rotary-red hover:underline">{s.label} ↗</a></li>
+            {/each}
+          </ul>
+        </div>
+      </div>
+      <div class="mt-8 rounded-sm bg-cream p-4">
+        <p class="text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground">How to cite this page</p>
+        <p class="mt-2 font-mono text-xs leading-relaxed text-foreground">
+          Rotary District 9210 — End Polio Now — Statistics — Last updated {formatStatDate(CAMPAIGN_STATS.lastUpdated)}. Sources: GPEI / WHO / UNICEF WUENIC / The Rotary Foundation. Downloaded 2026 via d9210-endpolio.org/statistics (CSV).
+        </p>
+        <p class="mt-2 text-xs leading-relaxed text-muted-foreground">
+          Campaign headline figures (children vaccinated, cases prevented, volunteers mobilised) are district estimates based on tally sheets, health facility returns and volunteer logs. Global totals: see <a href="https://polioeradication.org" target="_blank" rel="noopener noreferrer" class="font-semibold text-rotary-red hover:underline">polioeradication.org</a> and <a href="https://www.who.int/health-topics/poliomyelitis" target="_blank" rel="noopener noreferrer" class="font-semibold text-rotary-red hover:underline">who.int/polio</a>.
+        </p>
+      </div>
     </div>
   </section>
 </div>

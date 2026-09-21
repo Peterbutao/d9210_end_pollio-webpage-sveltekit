@@ -288,6 +288,31 @@ export const FUNDING_BY_YEAR = [
   { year: "2025", raised: 81000, target: 110000 },
 ] as const;
 
+export const DATA_SOURCES = {
+  cases: [
+    { label: "GPEI — Wild poliovirus list", url: "https://polioeradication.org/polio-today/polio-now/wild-poliovirus-list/" },
+    { label: "GPEI — This week (weekly case update)", url: "https://polioeradication.org/polio-today/polio-now/this-week/" },
+    { label: "WHO AFRO — Poliomyelitis fact sheet", url: "https://www.afro.who.int/health-topics/poliomyelitis-polio" },
+    { label: "CDC — Polio surveillance (MMWR)", url: "https://www.cdc.gov/mmwr/volumes/73/wr/mm7319a4.htm" },
+  ],
+  coverage: [
+    { label: "WHO — Immunization dashboard (WUENIC)", url: "https://immunizationdata.who.int/" },
+    { label: "WHO/UNICEF — Estimates of National Immunization Coverage (WUENIC)", url: "https://data.unicef.org/topic/child-health/immunization/" },
+    { label: "WHO GHO — Polio (Pol3) immunization coverage", url: "https://www.who.int/data/gho/data/indicators/indicator-details/GHO/polio-(pol3)-immunization-coverage-among-1-year-olds-(-)" },
+  ],
+  funding: [
+    { label: "Rotary — Our causes: Ending polio", url: "https://www.rotary.org/en/our-causes/ending-polio" },
+    { label: "End Polio Now — Donate / PolioPlus Fund", url: "https://www.endpolio.org/donate" },
+    { label: "GPEI — Financing the eradication effort", url: "https://polioeradication.org/financing/" },
+    { label: "Gates Foundation — Polio", url: "https://www.gatesfoundation.org/our-work/programs/global-development/polio" },
+  ],
+  campaign: [
+    { label: "WHO AFRO — Malawi/Zambia/Zimbabwe/Mozambique polio outbreak response 2026", url: "https://www.afro.who.int/countries/malawi/news/malawi-vaccinates-13-million-children-response-polio-outbreak" },
+    { label: "WHO — Poliomyelitis fact sheet", url: "https://www.who.int/news-room/fact-sheets/detail/poliomyelitis" },
+    { label: "District 9210 reports — compiled by PolioPlus committee", url: "/contact" },
+  ],
+} as const;
+
 export function formatNumber(value: number): string {
   return value.toLocaleString("en-US");
 }

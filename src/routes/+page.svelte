@@ -850,7 +850,7 @@
         </p>
       </div>
 
-      <div class="mt-10 grid gap-4 min-[480px]:gap-6 lg:grid-cols-2">
+      <div class="mt-10 grid gap-4 min-[480px]:gap-6 lg:grid-cols-3">
         <div class="min-w-0 rounded-sm bg-card p-3 shadow-md min-[480px]:p-6">
           <h3 class="font-display text-xl tracking-wide sm:text-2xl">Vaccination Coverage by Country</h3>
           <div class="relative mt-4 h-56 min-[480px]:h-72">
@@ -863,7 +863,7 @@
             <canvas bind:this={fundingCanvas} aria-label="Doughnut chart of PolioPlus funding progress"></canvas>
           </div>
         </div>
-        <div class="min-w-0 rounded-sm bg-card p-3 shadow-md min-[480px]:p-6 lg:col-span-2">
+        <div class="min-w-0 rounded-sm bg-card p-3 shadow-md min-[480px]:p-6">
           <h3 class="font-display text-xl tracking-wide sm:text-2xl">Wild Polio Cases Detected Over Time</h3>
           <div class="relative mt-4 h-56 min-[480px]:h-72">
             <canvas bind:this={casesCanvas} aria-label="Line chart of wild polio cases detected per year"></canvas>

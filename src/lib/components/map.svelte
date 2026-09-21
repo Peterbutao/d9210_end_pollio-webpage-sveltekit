@@ -31,15 +31,20 @@
     stroke-width: 1.6;
     vector-effect: non-scaling-stroke;
     filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.18));
+    transform-box: fill-box;
+    transform-origin: center;
+    will-change: transform;
     transition:
       transform 150ms ease,
       fill 150ms ease;
     cursor: pointer;
   }
+  :global(.map-svg .club-markers circle[fill="none"]) {
+    pointer-events: none;
+  }
   :global(.map-svg .club-markers circle:hover) {
     fill: var(--color-rotary-red-dark);
     transform: scale(1.15);
-    transform-origin: center;
   }
   /* Rotaract distinction — every 4th marker as gold ring (approx) */
   :global(.map-svg .club-markers circle:nth-child(4n)) {
