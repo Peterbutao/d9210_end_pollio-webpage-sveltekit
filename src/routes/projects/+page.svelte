@@ -1,6 +1,10 @@
 <script lang="ts">
+  import SEO from "$lib/components/SEO.svelte";
   import VaccineDrop from "$lib/components/VaccineDrop.svelte";
+  import { SITE, ROUTES } from "$lib/config/site";
   import { PROJECTS } from "$lib/data/content";
+
+  const meta = ROUTES.find((r) => r.path === "/projects")!;
 
   const TAG_STYLES: Record<string, string> = {
     "Immunization Day": "bg-rotary-red text-primary-foreground",
@@ -11,9 +15,32 @@
   };
 </script>
 
-<svelte:head>
-  <title>Projects & Campaigns — District 9210</title>
-</svelte:head>
+<SEO
+  title={meta.title}
+  description={meta.description}
+  breadcrumbs={[
+    { name: "Home", url: "/" },
+    { name: "Projects", url: "/projects" },
+  ]}
+  jsonLd={{
+    "@type": "CollectionPage",
+    name: meta.title,
+    description: meta.description,
+    isPartOf: { "@id": `${SITE.url}/#website` },
+    mainEntity: {
+      "@type": "ItemList",
+      numberOfItems: PROJECTS.length,
+      itemListElement: PROJECTS.map((p, i) => ({
+        "@type": "CreativeWork",
+        position: i + 1,
+        name: p.title,
+        description: p.summary,
+        keywords: [p.country, p.tag, p.year].join(", "),
+        url: (p as any).sources?.[0] ?? `${SITE.url}/projects`,
+      })),
+    },
+  }}
+/>
 
 <div>
   <section class="bg-rotary-red text-primary-foreground">

@@ -26,10 +26,12 @@
   <link rel="icon" href="/favicon.ico" type="image/x-icon" />
   <link rel="apple-touch-icon" href="/logo.png" />
   <link rel="manifest" href="/manifest.json" />
-  <!-- Preload critical hero LCP image -->
-  <link rel="preload" as="image" href="/hero-caro(1).jpg" fetchpriority="high" />
+  <!-- Preload critical LCP images (hero + OG) -->
+  <link rel="preload" as="image" href="/og-image.jpg" fetchpriority="high" />
+  <link rel="preload" as="image" href="/VAC.jpg" fetchpriority="high" />
   <!-- AI / LLM discovery -->
   <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-friendly site map" />
+  <link rel="alternate" type="application/xml" href="/sitemap.xml" title="Sitemap" />
 </svelte:head>
 
 <SiteHeader />

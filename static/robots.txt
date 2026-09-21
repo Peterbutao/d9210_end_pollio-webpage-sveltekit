@@ -1,0 +1,34 @@
+# robots.txt — D9210 End Polio Now
+User-agent: *
+Allow: /
+
+# AI / LLM crawlers — allow for discoverability
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+# Sitemap
+Sitemap: https://d9210-endpolio.org/sitemap.xml
+
+# LLM-friendly site map
+# See /llms.txt

@@ -1,10 +1,26 @@
 <script lang="ts">
+  import SEO from "$lib/components/SEO.svelte";
+  import { SITE, ROUTES } from "$lib/config/site";
   import { DISTRICT } from "$lib/data/content";
+
+  const meta = ROUTES.find((r) => r.path === "/contact")!;
 </script>
 
-<svelte:head>
-  <title>Contact & Newsletter — District 9210 End Polio Now</title>
-</svelte:head>
+<SEO
+  title={meta.title}
+  description={meta.description}
+  breadcrumbs={[
+    { name: "Home", url: "/" },
+    { name: "Contact", url: "/contact" },
+  ]}
+  jsonLd={{
+    "@type": "ContactPage",
+    name: meta.title,
+    description: meta.description,
+    isPartOf: { "@id": `${SITE.url}/#website` },
+    mainEntity: { "@id": `${SITE.url}/#organization` },
+  }}
+/>
 
 <div>
   <section class="bg-rotary-red text-primary-foreground">

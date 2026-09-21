@@ -1,6 +1,10 @@
 <script lang="ts">
+  import SEO from "$lib/components/SEO.svelte";
   import VaccineDrop from "$lib/components/VaccineDrop.svelte";
+  import { SITE, ROUTES } from "$lib/config/site";
   import { CAMPAIGN_STATS, formatUsd } from "$lib/data/content";
+
+  const meta = ROUTES.find((r) => r.path === "/get-involved")!;
 
   const WAYS = [
     {
@@ -30,9 +34,21 @@
   ] as const;
 </script>
 
-<svelte:head>
-  <title>Get Involved & PolioPlus Society — District 9210</title>
-</svelte:head>
+<SEO
+  title={meta.title}
+  description={meta.description}
+  breadcrumbs={[
+    { name: "Home", url: "/" },
+    { name: "Get Involved", url: "/get-involved" },
+  ]}
+  jsonLd={{
+    "@type": "DonateAction",
+    name: meta.title,
+    description: meta.description,
+    target: { "@type": "EntryPoint", urlTemplate: "https://www.endpolio.org/donate" },
+    recipient: { "@id": `${SITE.url}/#organization` },
+  }}
+/>
 
 <div>
   <section class="bg-rotary-red text-primary-foreground">

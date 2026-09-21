@@ -1,4 +1,6 @@
 <script lang="ts">
+  import SEO from "$lib/components/SEO.svelte";
+  import { SITE, ROUTES } from "$lib/config/site";
   import {
     CAMPAIGN_STATS,
     CASES_BY_YEAR,
@@ -8,6 +10,8 @@
     formatNumber,
     formatUsd,
   } from "$lib/data/content";
+
+  const meta = ROUTES.find((r) => r.path === "/statistics")!;
 
   const COUNTRIES = DISTRICT.countries;
   const COUNTRY_COLORS = [
@@ -44,9 +48,40 @@
   }
 </script>
 
-<svelte:head>
-  <title>Polio Eradication Statistics — District 9210</title>
-</svelte:head>
+<SEO
+  title={meta.title}
+  description={meta.description}
+  breadcrumbs={[
+    { name: "Home", url: "/" },
+    { name: "Statistics", url: "/statistics" },
+  ]}
+  jsonLd={[
+    {
+      "@type": "Dataset",
+      name: "D9210 Polio Cases by Country & Year",
+      description: "Wild and cVDPV polio cases by country/year — district-reported, downloadable CSV",
+      url: `${SITE.url}/statistics`,
+      keywords: ["polio", "cases", ...DISTRICT.countries],
+      temporalCoverage: "2020/2025",
+      distribution: [
+        {
+          "@type": "DataDownload",
+          encodingFormat: "text/csv",
+          contentUrl: `${SITE.url}/statistics`,
+          name: "d9210-polio-cases.csv",
+        },
+      ],
+      dateModified: CAMPAIGN_STATS.lastUpdated,
+    },
+    {
+      "@type": "Dataset",
+      name: "D9210 Immunization Coverage by Country & Year",
+      description: "Campaign coverage % of target by country/year",
+      url: `${SITE.url}/statistics`,
+      temporalCoverage: "2020/2025",
+    },
+  ]}
+/>
 
 <div>
   <section class="bg-rotary-red text-primary-foreground">

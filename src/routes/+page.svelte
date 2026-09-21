@@ -1,8 +1,10 @@
 ﻿<script lang="ts">
   import { onMount } from "svelte";
   import Chart from "chart.js/auto";
+  import SEO from "$lib/components/SEO.svelte";
   import VaccineDrop from "$lib/components/VaccineDrop.svelte";
   import Map from "$lib/components/map.svelte";
+  import { SITE, ROUTES } from "$lib/config/site";
   import {
     CAMPAIGN_STATS,
     CASES_BY_YEAR,
@@ -14,6 +16,8 @@
     formatNumber,
     formatUsd,
   } from "$lib/data/content";
+
+  const homeMeta = ROUTES.find((r) => r.path === "/")!;
 
   const volunteersImages = [
     { src: "/VOL.jpg", alt: "Rotary volunteers in red vests carrying vaccine carriers along a dusty road at sunset" },
@@ -405,9 +409,23 @@
   });
 </script>
 
-<svelte:head>
-  <title>End Polio Now â€” Rotary District 9210</title>
-</svelte:head>
+<SEO
+  title={homeMeta.title}
+  description={homeMeta.description}
+  keywords={[...SITE.keywords]}
+  ogType="website"
+  jsonLd={{
+    "@type": "CollectionPage",
+    name: homeMeta.title,
+    description: homeMeta.description,
+    isPartOf: { "@id": `${SITE.url}/#website` },
+    about: {
+      "@type": "Organization",
+      name: SITE.author,
+      url: SITE.url,
+    },
+  }}
+/>
 
 <div>
   <section class="relative overflow-hidden bg-rotary-red text-primary-foreground">

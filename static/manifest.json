@@ -1,0 +1,48 @@
+{
+  "name": "End Polio Now — Rotary District 9210",
+  "short_name": "End Polio D9210",
+  "description": "Rotary District 9210's End Polio Now campaign — tracking polio eradication across Malawi, Zambia, Zimbabwe and northern Mozambique since 1997. Data, projects, news and how to join the fight.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#EE1C25",
+  "lang": "en",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "500x500",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/og-image.jpg",
+      "sizes": "1200x630",
+      "type": "image/jpeg",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Statistics Dashboard",
+      "url": "/statistics",
+      "description": "Polio cases, coverage & funding — with CSV download"
+    },
+    {
+      "name": "Get Involved",
+      "url": "/get-involved",
+      "description": "Donate to PolioPlus, volunteer, start a campaign"
+    },
+    {
+      "name": "Clubs Directory",
+      "url": "/clubs",
+      "description": "Find a Rotary or Rotaract club"
+    }
+  ]
+}

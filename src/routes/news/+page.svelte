@@ -1,5 +1,9 @@
 <script lang="ts">
+  import SEO from "$lib/components/SEO.svelte";
+  import { SITE, ROUTES } from "$lib/config/site";
   import { NEWS } from "$lib/data/content";
+
+  const meta = ROUTES.find((r) => r.path === "/news")!;
 
   const TOPIC_FILTERS = ["All", "Immunization", "Fundraising", "Awareness", "Partnerships"] as const;
 
@@ -18,9 +22,36 @@
   }
 </script>
 
-<svelte:head>
-  <title>News & Updates — District 9210 End Polio Now</title>
-</svelte:head>
+<SEO
+  title={meta.title}
+  description={meta.description}
+  ogType="website"
+  breadcrumbs={[
+    { name: "Home", url: "/" },
+    { name: "News", url: "/news" },
+  ]}
+  jsonLd={{
+    "@type": "CollectionPage",
+    name: meta.title,
+    description: meta.description,
+    isPartOf: { "@id": `${SITE.url}/#website` },
+    mainEntity: {
+      "@type": "ItemList",
+      numberOfItems: NEWS.length,
+      itemListElement: NEWS.map((n, i) => ({
+        "@type": "NewsArticle",
+        position: i + 1,
+        headline: n.title,
+        description: n.excerpt,
+        datePublished: n.date,
+        author: { "@type": "Organization", name: SITE.author },
+        url: (n as any).link,
+        image: (n as any).image?.startsWith("http") ? (n as any).image : `${SITE.url}${(n as any).image}`,
+        keywords: [n.country, n.topic].join(", "),
+      })),
+    },
+  }}
+/>
 
 <div>
   <section class="bg-rotary-red text-primary-foreground">

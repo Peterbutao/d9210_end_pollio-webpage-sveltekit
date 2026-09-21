@@ -27,9 +27,8 @@ export const SITE = {
   author: "Rotary International District 9210",
   locale: "en_ZA",
   language: "en",
-  // Open Graph / Twitter image — absolute path, 1200×630 recommended. Uses hero field photo.
-  // For best card quality, replace with a dedicated 1200×630 OG image at /og-image.jpg
-  ogImage: "/hero-caro(1).jpg",
+  // Open Graph / Twitter image — 1200×630 dedicated OG image (also hero fallback)
+  ogImage: "/og-image.jpg",
   ogImageAlt:
     "Rotary District 9210 volunteers vaccinating children — End Polio Now campaign across Malawi, Zambia, Zimbabwe and Mozambique",
   ogImageWidth: 1200,

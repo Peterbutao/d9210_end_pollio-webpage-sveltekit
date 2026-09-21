@@ -1,5 +1,9 @@
 <script lang="ts">
+  import SEO from "$lib/components/SEO.svelte";
+  import { SITE, ROUTES } from "$lib/config/site";
   import { CLUBS } from "$lib/data/content";
+
+  const meta = ROUTES.find((r) => r.path === "/clubs")!;
 
   const COUNTRY_FILTERS = ["All", "Malawi", "Mozambique", "Zambia", "Zimbabwe"] as const;
   const TYPE_FILTERS = ["All", "Rotary", "Rotaract"] as const;
@@ -12,9 +16,32 @@
   );
 </script>
 
-<svelte:head>
-  <title>Clubs Directory — District 9210</title>
-</svelte:head>
+<SEO
+  title={meta.title}
+  description={meta.description}
+  breadcrumbs={[
+    { name: "Home", url: "/" },
+    { name: "Clubs", url: "/clubs" },
+  ]}
+  jsonLd={{
+    "@type": "CollectionPage",
+    name: meta.title,
+    description: meta.description,
+    isPartOf: { "@id": `${SITE.url}/#website` },
+    mainEntity: {
+      "@type": "ItemList",
+      numberOfItems: CLUBS.length,
+      itemListElement: CLUBS.map((c, i) => ({
+        "@type": "Organization",
+        position: i + 1,
+        name: c.name,
+        description: `${c.type} in ${c.city}, ${c.country} — meets ${c.meetingDay}s`,
+        url: `${SITE.url}/clubs`,
+        areaServed: c.country,
+      })),
+    },
+  }}
+/>
 
 <div>
   <section class="bg-rotary-red text-primary-foreground">

@@ -1,7 +1,11 @@
 <script lang="ts">
   import { onMount } from "svelte";
+  import SEO from "$lib/components/SEO.svelte";
   import VaccineDrop from "$lib/components/VaccineDrop.svelte";
+  import { SITE, ROUTES } from "$lib/config/site";
   import { DISTRICT, FOCUS_AREAS, LEADERSHIP } from "$lib/data/content";
+
+  const meta = ROUTES.find((r) => r.path === "/about")!;
 
   const aboutImages = [
     // { src: "/images/volunteers.jpg", alt: "Health workers vaccinating children at an outdoor immunization day" },
@@ -42,9 +46,21 @@
   });
 </script>
 
-<svelte:head>
-  <title>About District 9210 — End Polio Now</title>
-</svelte:head>
+<SEO
+  title={meta.title}
+  description={meta.description}
+  breadcrumbs={[
+    { name: "Home", url: "/" },
+    { name: "About", url: "/about" },
+  ]}
+  jsonLd={{
+    "@type": "AboutPage",
+    name: meta.title,
+    description: meta.description,
+    isPartOf: { "@id": `${SITE.url}/#website` },
+    about: { "@id": `${SITE.url}/#organization` },
+  }}
+/>
 
 <div>
   <section class="bg-rotary-red text-primary-foreground">

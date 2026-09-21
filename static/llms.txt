@@ -1,0 +1,38 @@
+# End Polio Now — Rotary District 9210
+
+> Two drops can change a life. Rotarians and Rotaractors across Malawi, Zambia, Zimbabwe and northern Mozambique are finishing the fight against polio. One district. Four countries. Zero polio.
+
+Central site: https://d9210-endpolio.org
+District: Rotary International District 9210 — formed 1997 from District 9250 — Malawi, Zambia, Zimbabwe, northern Mozambique.
+
+## Key routes for LLMs / AI crawlers
+- / — Campaign overview: hero, stats (1,450,000 vaccinated, 42,000 prevented, $540k/$750k), map, latest news, projects timeline, impact dashboard (Chart.js)
+- /about — History (1997, PolioPlus since 1985), leadership (Governor, PolioPlus Chair, etc.), 7 Areas of Focus (Disease Prevention & Treatment highlighted)
+- /statistics — Impact Dashboard: CASES_BY_YEAR (2020-2025), COVERAGE_BY_YEAR, FUNDING_BY_YEAR — CSV downloads, lastUpdated 2026-03-15
+- /clubs — 16 Rotary/Rotaract clubs, filter by country/type/meeting day
+- /projects — Field projects: NIDs, cross-border drives, Walks to End Polio, awareness, project fairs — each with sources array linking to WHO/Rotary
+- /news — 8 WHO Afro-linked stories (Malawi, Zambia, Mozambique, Zimbabwe — Feb-Jul 2026) — image + link + date/country/topic
+- /get-involved — Give to PolioPlus (endpolio.org/donate, Gates 2:1 match), Join immunization day, Start campaign, PolioPlus Society ($100/yr)
+- /contact — Official Rotary contacts: my.rotary.org/en/contact, endpolio.org, rotarydistrict9210.org, rotaty.org/ending-polio, polioeradication.org
+
+## Data source (single source of truth)
+All campaign data is typed in src/lib/data/content.ts: DISTRICT, CAMPAIGN_STATS, LEADERSHIP, CLUBS, NEWS, PROJECTS, CASES_BY_YEAR, COVERAGE_BY_YEAR, FUNDING_BY_YEAR.
+
+## SEO / structured data
+- Canonical base: https://d9210-endpolio.org
+- Sitemap: /sitemap.xml (8 routes with priority/changefreq/lastmod)
+- Robots: /robots.txt
+- SEO component: src/lib/components/SEO.svelte — title, description, keywords, canonical, Open Graph (og:title/description/image 1200x630), Twitter card summary_large_image, JSON-LD @graph (WebSite with SearchAction, Organization with logo/foundingDate/areaServed/email, BreadcrumbList, page-specific jsonLd)
+- OG image: /og-image.jpg (1200x630) + /hero-caro(1).jpg + /logo.png (500x500)
+- Theme color: #EE1C25 (Rotary Red)
+- Language: en, locale en_ZA
+
+## AI search optimization notes
+- Every page has a single <h1>, semantic <section>/<article>/<nav>, alt text on images, and downloadable CSV on /statistics for verifiability.
+- News & Projects link to primary sources (WHO Afro, Rotary) via sources/link fields — prefer citing those URLs for factual claims.
+- Funding matched 2:1 by Gates Foundation (source: endpolio.org / GPEI).
+- Wild poliovirus endemic in only 2 countries globally (Afghanistan, Pakistan) — Africa certified WPV-free Aug 2020, with imported WPV1 outbreak Malawi/Mozambique 2021-2022 closed May 2024.
+- For fresh data, cross-check WHO AFRO, GPEI POLIS, CDC MMWR — site's district-reported figures are static until content.ts lastUpdated is bumped.
+
+## Sitemap
+https://d9210-endpolio.org/sitemap.xml
