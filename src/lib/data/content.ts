@@ -55,131 +55,209 @@ export const CLUBS = [
   { name: "Harare Rotaract", city: "Harare", country: "Zimbabwe", type: "Rotaract", meetingDay: "Thursday" },
 ] as const;
 
+
 export const NEWS = [
   {
-    slug: "nid-march-2026",
-    title: "National Immunization Day reaches 120 000 children in Malawi",
+    slug: "malawi-polio-response-february-2026",
+    title: "Malawi vaccinates 1.3 million children in polio outbreak response",
     excerpt:
-      "Rotarians joined Ministry of Health teams across 14 districts for the March NID, delivering oral polio vaccine to children under five.",
-    date: "2026-03-20",
+      "Malawi vaccinated around 1.3 million children during a four-day campaign after a circulating variant poliovirus type 2 case was detected in late January 2026.",
+    date: "2026-02-24",
     country: "Malawi",
     topic: "Immunization" as const,
+    link:
+      "https://www.afro.who.int/countries/malawi/news/malawi-vaccinates-13-million-children-response-polio-outbreak",
+    image:
+      "https://www.afro.who.int/sites/default/files/styles/1920x1080_top/public/2026-02/41.png.webp?itok=CKMSLGPj",
   },
   {
-    slug: "cross-border-august",
-    title: "Cross-border campaign vaccinates children along Zambia-Zimbabwe corridor",
+    slug: "malawi-national-polio-campaign-march-2026",
+    title: "Malawi nationwide polio campaign reaches more than 6.2 million children",
     excerpt:
-      "A joint Zambia-Zimbabwe drive targeted mobile populations in the Chirundu border area, reaching 18 000 children in three days.",
-    date: "2026-02-10",
+      "Malawi’s nationwide polio vaccination campaign ran from 24 to 27 March 2026 and reached 6,223,422 children under the age of 10 across all districts.",
+    date: "2026-03-27",
+    country: "Malawi",
+    topic: "Immunization" as const,
+    link:
+      "https://www.afro.who.int/countries/malawi/photo-story/power-science-health-malawis-milestones-transforming-lives",
+    image: "/VAC.jpg",
+  },
+  {
+    slug: "zambia-first-polio-round-april-2026",
+    title: "Zambia launches campaign targeting 3.7 million children",
+    excerpt:
+      "Zambia launched a nationwide subnational immunization campaign in April 2026, targeting children under five in Lusaka, Southern, Eastern, Central, Western, and Muchinga provinces.",
+    date: "2026-04-22",
     country: "Zambia",
     topic: "Immunization" as const,
+    link:
+      "https://www.afro.who.int/countries/zambia/news/zambia-launches-nationwide-polio-vaccination-campaign-protect-every-child-under-five",
+    image:
+      "https://www.afro.who.int/sites/default/files/styles/1920x1080_top/public/2026-04/235A3153.JPG.webp?itok=EwJlZbCi",
   },
   {
-    slug: "polio-plus-milestone",
-    title: "District PolioPlus Society surpasses 400 sustaining members",
-    excerpt: "With 412 members now committed until eradication, D9210 leads the region in Rotarian polio pledges.",
-    date: "2026-01-28",
-    country: "Zimbabwe",
-    topic: "Fundraising" as const,
-  },
-  {
-    slug: "walk-to-end-polio-2025",
-    title: "Walk to End Polio draws 3 000 participants in Lusaka",
+    slug: "zambia-final-polio-round-july-2026",
+    title: "Zambia launches final polio campaign round for 3.9 million children",
     excerpt:
-      "Clubs from all four countries coordinated simultaneous walks on World Polio Day, raising US$47 000 for PolioPlus.",
-    date: "2025-10-24",
+      "The final 2026 round of Zambia’s polio campaign targeted about 3.9 million children under five in six priority provinces from 21 to 26 July.",
+    date: "2026-07-28",
     country: "Zambia",
-    topic: "Fundraising" as const,
+    topic: "Immunization" as const,
+    link:
+      "https://www.afro.who.int/countries/zambia/news/zambia-launches-final-round-polio-vaccination-campaign-targeting-39-million-children",
+    image:
+      "https://www.afro.who.int/sites/default/files/styles/1920x1080_top/public/2026-07/Polio%20Launch_0.jpg.webp?itok=a6aubvCZ",
   },
   {
-    slug: "rotaract-awareness",
-    title: "Rotaractors lead school awareness campaign in Nampula",
+    slug: "mozambique-second-polio-round-june-2026",
+    title: "Mozambique targets more than 6 million children in second polio round",
     excerpt:
-      "Rotaract clubs from Nampula and neighbouring districts reached 15 000 students with polio facts and vaccine confidence messages.",
-    date: "2025-09-12",
+      "Mozambique conducted its second 2026 polio vaccination round from 17 to 20 June across 64 districts in seven provinces, targeting more than 6 million children under five.",
+    date: "2026-06-20",
+    country: "Mozambique",
+    topic: "Immunization" as const,
+    link:
+      "https://www.afro.who.int/photo-story/two-drops-confidence-communities-and-healthcare-professionals-join-forces-protect?country=Mozambique&name=Mozambique",
+    image: "/VOL.jpg",
+  },
+  {
+    slug: "mozambique-polio-campaign-july-2026",
+    title: "Mozambique continues polio vaccination rounds across high-risk districts",
+    excerpt:
+      "Mozambique continued its synchronized polio response with additional vaccination activities, urging families to vaccinate children under 10 against paralysis.",
+    date: "2026-07-12",
     country: "Mozambique",
     topic: "Awareness" as const,
+    link:
+      "https://www.afro.who.int/countries/mozambique/news",
+    image: "/D9210.jpg",
   },
   {
-    slug: "who-partnership",
-    title: "WHO praises D9210 for cross-border surveillance coordination",
+    slug: "zimbabwe-synchronized-polio-campaigns-2026",
+    title: "Zimbabwe completes three synchronized polio vaccination rounds",
     excerpt:
-      "The World Health Organization recognised the district's data-sharing protocol as a model for other border regions in Africa.",
-    date: "2025-08-05",
+      "Zimbabwe completed three synchronized nOPV2 campaigns in April, June, and July 2026, vaccinating 936,618, 997,941, and 1,025,806 children respectively.",
+    date: "2026-07-23",
+    country: "Zimbabwe",
+    topic: "Immunization" as const,
+    link:
+      "https://www.afro.who.int/countries/zimbabwe/news/united-against-polio-zimbabwe-strengthens-regional-immunity-through-synchronized-vaccination",
+    image:
+      "https://www.afro.who.int/sites/default/files/styles/1920x1080_top/public/2026-07/DSC_2404_0.JPG.webp?itok=Nq5AjF30",
+  },
+  {
+    slug: "zimbabwe-regional-polio-response",
+    title: "Zimbabwe strengthens regional immunity through synchronized vaccination",
+    excerpt:
+      "Zimbabwe joined Malawi, Mozambique, Zambia, Namibia, and Botswana in a coordinated subregional response focused on border areas and densely populated urban centres at higher risk of virus importation.",
+    date: "2026-07-23",
     country: "Zimbabwe",
     topic: "Partnerships" as const,
-  },
-  {
-    slug: "project-fair-2025",
-    title: "Annual District Project Fair showcases 28 polio initiatives",
-    excerpt:
-      "Clubs presented immunization day reports, grant-funded projects and awareness campaigns at the Lilongwe fair.",
-    date: "2025-07-18",
-    country: "Malawi",
-    topic: "Awareness" as const,
+    link:
+      "https://www.afro.who.int/countries/zimbabwe/news/united-against-polio-zimbabwe-strengthens-regional-immunity-through-synchronized-vaccination",
+    image: "/zambia.jpg",
   },
 ] as const;
 
+
+
 export const PROJECTS = [
   {
-    title: "March NID Malawi 2026",
+    title: "Malawi National Polio Vaccination Campaigns 2026",
     tag: "Immunization Day",
     year: "2026",
     country: "Malawi",
     summary:
-      "Rotarians supported 14 districts with transport, tally sheets and cold-chain monitoring during the March National Immunization Day.",
+      "In 2026, Malawi ran multiple nationwide nOPV2 polio campaigns (including a major round in March) reaching millions of children under 10 across all districts, with Rotary among the partners supporting mobilization and advocacy. Exact district-level support (transport, tally sheets, cold-chain monitoring) should be confirmed from district reports.",
+    sources: [
+      "https://www.afro.who.int/countries/malawi/news/malawi-vaccinates-13-million-children-response-polio-outbreak",
+      "https://www.afro.who.int/countries/malawi/news/malawi-launches-second-round-polio-vaccination-campaign",
+      "https://www.afro.who.int/countries/malawi/photo-story/power-science-health-malawis-milestones-transforming-lives",
+    ],
   },
   {
-    title: "Chirundu Cross-Border Drive",
+    title: "Southern Africa Regional Polio Outbreak Response (Zambia, Zimbabwe, Mozambique, Malawi)",
     tag: "Cross-Border",
     year: "2026",
     country: "Zambia",
-    summary: "A joint Zambia-Zimbabwe campaign vaccinated 18 000 children in the Chirundu border area over three days.",
+    summary:
+      "Zambia, Zimbabwe, Mozambique, Malawi and neighbours conducted synchronized polio vaccination rounds in 2026 to stop cross-border spread. Specific cross-border activities around Chirundu (Zambia–Zimbabwe) are part of this regional effort; exact case counts and children vaccinated in a named ‘Chirundu drive’ should be verified with provincial health/Rotary records.",
+    sources: [
+      "https://www.afro.who.int/countries/zambia/news/zambia-launches-nationwide-polio-vaccination-campaign-protect-every-child-under-five",
+      "https://www.afro.who.int/countries/zambia/news/zambia-undertakes-second-round-polio-vaccination-campaign-protect-every-child-against-polio",
+      "https://www.healthcaremea.com/2026/07/24/zimbabwe-completes-three-round-polio-vaccination-drive-to-curb-cross-border-virus-spread/",
+    ],
   },
   {
-    title: "Walk to End Polio 2025",
+    title: "World Polio Day 2025 – End Polio Advocacy and Fundraising",
     tag: "Fundraiser",
     year: "2025",
     country: "Zambia",
-    summary: "Coordinated walks across all four countries on World Polio Day raised US$47 000 for PolioPlus.",
+    summary:
+      "Rotary clubs across southern Africa marked World Polio Day (24 October) 2025 with awareness walks and fundraising under the ‘End Polio Now’ banner. A precise total such as ‘US$47,000 raised across four countries’ is not published in open sources and should be confirmed from your district’s finance/PolioPlus reports.",
+    sources: [
+      "https://www.rotary.org/our-work/ending-polio",
+      "https://polioeradication.org/news/global-leaders-pledge-us-1-9-billion-in-abu-dhabi-to-end-polio-and-protect-children-worldwide/",
+    ],
   },
   {
-    title: "Nampula School Campaign",
+    title: "Polio Awareness in Schools – Nampula, Mozambique",
     tag: "Awareness",
     year: "2025",
     country: "Mozambique",
-    summary: "Rotaractors reached 15 000 students with polio awareness and vaccine confidence sessions.",
+    summary:
+      "Mozambique ran large polio vaccination and awareness campaigns in 2025–2026, including in Nampula province. School-based sessions on polio and vaccine confidence are consistent with national efforts; the figure of ‘15,000 students’ should be confirmed with provincial education/health or Rotaract records.",
+    sources: [
+      "https://www.afro.who.int/photo-story/two-drops-confidence-communities-and-healthcare-professionals-join-forces-protect",
+    ],
   },
   {
-    title: "Lilongwe Project Fair 2025",
+    title: "Lilongwe District Polio Project Showcase 2025",
     tag: "Project Fair",
     year: "2025",
     country: "Malawi",
     summary:
-      "28 polio initiatives showcased at the district's annual project fair, including new grant-funded campaigns.",
+      "Lilongwe district has hosted health and development project fairs where polio and immunization initiatives are presented. The exact number of polio initiatives showcased (e.g., ‘28’) and details of new grant-funded campaigns should be verified with the district’s project fair documentation or club reports.",
+    sources: [
+      "https://www.afro.who.int/countries/malawi/news/together-every-child-malawis-journey-toward-polio-free-future",
+    ],
   },
   {
-    title: "Mutare Immunization Day",
+    title: "Manicaland (Mutare) Polio Vaccination Activities",
     tag: "Immunization Day",
     year: "2025",
     country: "Zimbabwe",
     summary:
-      "Clubs in Manicaland province reached 22 000 children with OPV in partnership with provincial health teams.",
+      "In 2025–2026, Zimbabwe implemented targeted and national polio campaigns that included Manicaland province (Mutare, Mutasa, Chimanimani, Chipinge). Rotary and partners supported mobilization and community engagement. Specific numbers such as ‘22,000 children reached with OPV’ need confirmation from provincial EPI/Rotary records.",
+    sources: [
+      "https://origins.co.zw/health-ministry-rolls-out-polio-vaccination-campaign",
+      "https://vicfallslive.co.zw/health-ministry-rolls-out-polio-vaccination-campaign/",
+      "https://www.afro.who.int/countries/zimbabwe/publication/zimbabwes-expanded-programme-immunization-epi-2025-annual-bulletin",
+    ],
   },
   {
-    title: "Lake Malawi Wellness Drive",
+    title: "Lake Malawi Shoreline Polio Outreach",
     tag: "Immunization Day",
     year: "2024",
     country: "Malawi",
     summary:
-      "A week-long drive along Lake Malawi's shoreline vaccinated 34 000 children in hard-to-reach fishing communities.",
+      "Communities along Lake Malawi have been priority areas for polio outreach, with health workers using boats and shoreline posts to reach fishing villages during national campaigns. A specific ‘week-long Lake Malawi Wellness Drive’ vaccinating ‘34,000 children’ is not documented in public sources and should be checked against district campaign reports.",
+    sources: [
+      "https://www.afro.who.int/countries/malawi/photo-story/reaching-every-last-child-polio-vaccine-vaccinator-experience",
+      "https://www.afro.who.int/countries/malawi/news/two-friends-two-drops-one-promise-villages-hope-against-polio",
+    ],
   },
   {
-    title: "Tete Corridor Campaign",
+    title: "Tete Corridor Cross-Border Polio Activities",
     tag: "Cross-Border",
     year: "2024",
     country: "Mozambique",
-    summary: "Cross-border coordination with Zambia reached mobile populations along the Tete-Zambia corridor.",
+    summary:
+      "Tete province (Mozambique) has been included in regional polio responses with attention to mobile and cross-border populations, including links with Zambia. Detailed descriptions of a named ‘Tete Corridor Campaign’ and its exact reach should be validated with provincial health/Rotary documentation.",
+    sources: [
+      "https://www.afro.who.int/photo-story/two-drops-confidence-communities-and-healthcare-professionals-join-forces-protect",
+      "https://www.healthcaremea.com/2026/07/24/zimbabwe-completes-three-round-polio-vaccination-drive-to-curb-cross-border-virus-spread/",
+    ],
   },
 ] as const;
 

@@ -56,18 +56,59 @@
             class="absolute -left-[2.35rem] top-1 h-4 w-4 rounded-full border-4 border-rotary-gold bg-rotary-red"
             aria-hidden="true"
           ></span>
-          <article class="rounded-sm bg-card p-6 shadow-md">
-            <div class="flex flex-wrap items-center gap-2 text-xs font-bold uppercase tracking-wider">
-              <span class="rounded-sm bg-rotary-red px-2 py-1 text-primary-foreground">{item.country}</span>
-              <span class="rounded-sm bg-rotary-gold px-2 py-1 text-charcoal">{item.topic}</span>
-              <time class="text-muted-foreground" datetime={item.date}>
-                {formatDate(item.date)}
-              </time>
+          <article class="overflow-hidden rounded-sm bg-card shadow-md">
+            {#if (item as any).image}
+              <a href={(item as any).link} target="_blank" rel="noopener noreferrer" class="block overflow-hidden">
+                <img
+                  src={(item as any).image}
+                  alt={item.title}
+                  width="800"
+                  height="450"
+                  loading="lazy"
+                  class="h-56 w-full object-cover transition-transform duration-300 hover:scale-[1.02]"
+                  onerror={(e) => ((e.currentTarget as HTMLImageElement).src = '/VAC.jpg')}
+                />
+              </a>
+            {/if}
+            <div class="p-6">
+              <div class="flex flex-wrap items-center gap-2 text-xs font-bold uppercase tracking-wider">
+                <span class="rounded-sm bg-rotary-red px-2 py-1 text-primary-foreground">{item.country}</span>
+                <span class="rounded-sm bg-rotary-gold px-2 py-1 text-charcoal">{item.topic}</span>
+                <time class="text-muted-foreground" datetime={item.date}>
+                  {formatDate(item.date)}
+                </time>
+              </div>
+              <h2 class="mt-3 font-display text-3xl leading-tight tracking-wide text-foreground">
+                <a
+                  href={(item as any).link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="hover:text-rotary-red hover:underline"
+                >
+                  {item.title}
+                </a>
+              </h2>
+              <p class="mt-3 text-muted-foreground">{item.excerpt}</p>
+              <a
+                href={(item as any).link}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="mt-4 inline-flex items-center gap-1 text-sm font-bold uppercase tracking-wide text-rotary-red hover:underline"
+              >
+                Read full story
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg
+                >
+              </a>
             </div>
-            <h2 class="mt-3 font-display text-3xl leading-tight tracking-wide text-foreground">
-              {item.title}
-            </h2>
-            <p class="mt-3 text-muted-foreground">{item.excerpt}</p>
           </article>
         </li>
       {/each}

@@ -41,12 +41,34 @@
               <span class="font-display text-xl tracking-wide text-muted-foreground">{project.year}</span>
             </div>
             <h2 class="mt-4 font-display text-3xl leading-tight tracking-wide text-foreground">
-              {project.title}
+              <a
+                href={(project as any).sources?.[0] ?? '#'}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="hover:text-rotary-red hover:underline"
+              >
+                {project.title}
+              </a>
             </h2>
             <p class="mt-1 text-xs font-bold uppercase tracking-[0.2em] text-rotary-red">
               {project.country}
             </p>
             <p class="mt-4 flex-1 text-muted-foreground">{project.summary}</p>
+            {#if (project as any).sources?.length}
+              <div class="mt-4 flex flex-wrap gap-2">
+                {#each (project as any).sources as src, i (src)}
+                  <a
+                    href={src}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-1 rounded-sm border border-rotary-red px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-rotary-red transition-colors hover:bg-rotary-red hover:text-white"
+                  >
+                    {i === 0 ? 'Learn more' : `Source ${i + 1}`}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7" /><path d="M7 7h10v10" /></svg>
+                  </a>
+                {/each}
+              </div>
+            {/if}
           </article>
         {/each}
       </div>

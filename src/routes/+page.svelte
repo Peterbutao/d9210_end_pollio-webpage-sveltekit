@@ -24,7 +24,7 @@
   let volunteersPaused = $state(false);
   let volunteersTimer = $state<ReturnType<typeof setTimeout>>();
 
-  const heroImages = ["/hero-caro(1).jpg", "/hero-caro(2).jpg", "/hero-caro(3).jpg"];
+  const heroImages = ["/VAC.jpg"];
   const AUTOPLAY_MS = 3000;
   let heroIndex = $state(0);
   let heroPaused = $state(false);
@@ -708,33 +708,57 @@
     <div class="mt-10 grid gap-6 md:grid-cols-3">
       {#each latestNews as item (item.slug)}
         <article
-          class="group flex flex-col rounded-sm border-t-4 border-rotary-gold bg-card p-6 shadow-md transition-shadow hover:shadow-xl"
+          class="group flex flex-col overflow-hidden rounded-sm border-t-4 border-rotary-gold bg-card shadow-md transition-shadow hover:shadow-xl"
         >
-          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider">
-            <span class="rounded-sm bg-rotary-red px-2 py-1 text-primary-foreground">{item.country}</span>
-            <span class="text-muted-foreground">{formatDate(item.date)}</span>
-          </div>
-          <h3 class="mt-4 font-display text-2xl leading-tight tracking-wide text-foreground">
-            {item.title}
-          </h3>
-          <p class="mt-3 flex-1 text-sm text-muted-foreground">{item.excerpt}</p>
-          <a
-            href="/news"
-            class="mt-4 inline-flex items-center gap-1 text-sm font-bold uppercase tracking-wide text-rotary-red group-hover:underline"
-          >
-            Read more
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg
+          {#if (item as any).image}
+            <a href={(item as any).link} target="_blank" rel="noopener noreferrer" class="block overflow-hidden">
+              <img
+                src={(item as any).image}
+                alt={item.title}
+                width="600"
+                height="340"
+                loading="lazy"
+                class="h-48 w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                onerror={(e) => ((e.currentTarget as HTMLImageElement).src = '/VAC.jpg')}
+              />
+            </a>
+          {/if}
+          <div class="flex flex-1 flex-col p-6">
+            <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider">
+              <span class="rounded-sm bg-rotary-red px-2 py-1 text-primary-foreground">{item.country}</span>
+              <span class="text-muted-foreground">{formatDate(item.date)}</span>
+            </div>
+            <h3 class="mt-4 font-display text-2xl leading-tight tracking-wide text-foreground">
+              <a
+                href={(item as any).link}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="hover:text-rotary-red hover:underline"
+              >
+                {item.title}
+              </a>
+            </h3>
+            <p class="mt-3 flex-1 text-sm text-muted-foreground">{item.excerpt}</p>
+            <a
+              href={(item as any).link}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-4 inline-flex items-center gap-1 text-sm font-bold uppercase tracking-wide text-rotary-red group-hover:underline"
             >
-          </a>
+              Read full story
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg
+              >
+            </a>
+          </div>
         </article>
       {/each}
     </div>
@@ -759,14 +783,43 @@
           <p class="font-display text-xl tracking-wide text-accent">
             {project.year} &middot; {project.tag}
           </p>
-          <h3 class="mt-1 font-display text-3xl tracking-wide text-white">{project.title}</h3>
-          <p class="mt-1 text-sm font-semibold uppercase tracking-wider  text-accent">
+          <h3 class="mt-1 font-display text-3xl tracking-wide text-white">
+            <a
+              href={(project as any).sources?.[0] ?? '/projects'}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hover:text-rotary-gold hover:underline"
+            >
+              {project.title}
+            </a>
+          </h3>
+          <p class="mt-1 text-sm font-semibold uppercase tracking-wider text-accent">
             {project.country}
           </p>
           <p class="mt-2 max-w-2xl text-white">{project.summary}</p>
+          {#if (project as any).sources?.length}
+            <a
+              href={(project as any).sources[0]}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-3 inline-flex items-center gap-1 text-sm font-bold uppercase tracking-wide text-rotary-gold hover:text-white hover:underline"
+            >
+              Learn more
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7" /><path d="M7 7h10v10" /></svg>
+            </a>
+          {/if}
         </li>
       {/each}
     </ol>
+    <div class="mt-12">
+      <a
+        href="/projects"
+        class="inline-flex items-center gap-2 rounded-sm bg-white px-6 py-3 font-display text-xl tracking-wide text-primary transition-colors hover:bg-rotary-gold hover:text-charcoal"
+      >
+        View all projects & campaigns
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+      </a>
+    </div>
   </section>
 
   <section aria-label="Eradication progress" class="bg-white" id="statistics">

@@ -2,24 +2,21 @@
   import "../app.css";
   import SiteHeader from "$lib/components/SiteHeader.svelte";
   import SiteFooter from "$lib/components/SiteFooter.svelte";
+  import SEO from "$lib/components/SEO.svelte";
+  import { SITE } from "$lib/config/site";
   let { children } = $props();
 </script>
 
+<!-- Global SEO defaults — page-level SEO.svelte calls will override via deduped <title>/<meta> -->
+<SEO
+  title={SITE.title}
+  description={SITE.description}
+  keywords={[...SITE.keywords]}
+  ogType="website"
+/>
+
 <svelte:head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>End Polio Now — Rotary District 9210</title>
-  <meta
-    name="description"
-    content="Rotary District 9210's End Polio Now campaign: polio eradication statistics, projects and news across Malawi, Zambia, Zimbabwe and northern Mozambique."
-  />
-  <meta property="og:title" content="End Polio Now — Rotary District 9210" />
-  <meta
-    property="og:description"
-    content="Track the district's polio eradication statistics, projects and campaign news across four countries."
-  />
-  <meta property="og:type" content="website" />
-  <meta name="twitter:card" content="summary_large_image" />
+  <!-- Fonts & performance hints -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
   <link
@@ -27,6 +24,12 @@
     rel="stylesheet"
   />
   <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="/logo.png" />
+  <link rel="manifest" href="/manifest.json" />
+  <!-- Preload critical hero LCP image -->
+  <link rel="preload" as="image" href="/hero-caro(1).jpg" fetchpriority="high" />
+  <!-- AI / LLM discovery -->
+  <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-friendly site map" />
 </svelte:head>
 
 <SiteHeader />
