@@ -2,18 +2,8 @@
   import "../app.css";
   import SiteHeader from "$lib/components/SiteHeader.svelte";
   import SiteFooter from "$lib/components/SiteFooter.svelte";
-  import SEO from "$lib/components/SEO.svelte";
-  import { SITE } from "$lib/config/site";
   let { children } = $props();
 </script>
-
-<!-- Global SEO defaults — page-level SEO.svelte calls will override via deduped <title>/<meta> -->
-<SEO
-  title={SITE.title}
-  description={SITE.description}
-  keywords={[...SITE.keywords]}
-  ogType="website"
-/>
 
 <svelte:head>
   <!-- Fonts & performance hints -->
