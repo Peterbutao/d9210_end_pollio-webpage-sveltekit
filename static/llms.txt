@@ -2,7 +2,7 @@
 
 > Two drops can change a life. Rotarians and Rotaractors across Malawi, Zambia, Zimbabwe and northern Mozambique are finishing the fight against polio. One district. Four countries. Zero polio.
 
-Central site: https://d9210-endpolio.org
+Central site: https://end-polio-now-d9210.pages.dev
 District: Rotary International District 9210 — formed 1997 from District 9250 — Malawi, Zambia, Zimbabwe, northern Mozambique.
 
 ## Key routes for LLMs / AI crawlers
@@ -19,7 +19,7 @@ District: Rotary International District 9210 — formed 1997 from District 9250 
 All campaign data is typed in src/lib/data/content.ts: DISTRICT, CAMPAIGN_STATS, LEADERSHIP, CLUBS, NEWS, PROJECTS, CASES_BY_YEAR, COVERAGE_BY_YEAR, FUNDING_BY_YEAR.
 
 ## SEO / structured data
-- Canonical base: https://d9210-endpolio.org
+- Canonical base: https://end-polio-now-d9210.pages.dev
 - Sitemap: /sitemap.xml (8 routes with priority/changefreq/lastmod)
 - Robots: /robots.txt
 - SEO component: src/lib/components/SEO.svelte — title, description, keywords, canonical, Open Graph (og:title/description/image 1200x630), Twitter card summary_large_image, JSON-LD @graph (WebSite with SearchAction, Organization with logo/foundingDate/areaServed/email, BreadcrumbList, page-specific jsonLd)
@@ -35,4 +35,4 @@ All campaign data is typed in src/lib/data/content.ts: DISTRICT, CAMPAIGN_STATS,
 - For fresh data, cross-check WHO AFRO, GPEI POLIS, CDC MMWR — site's district-reported figures are static until content.ts lastUpdated is bumped.
 
 ## Sitemap
-https://d9210-endpolio.org/sitemap.xml
+https://end-polio-now-d9210.pages.dev/sitemap.xml

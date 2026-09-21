@@ -28,7 +28,7 @@ User-agent: Bytespider
 Allow: /
 
 # Sitemap
-Sitemap: https://d9210-endpolio.org/sitemap.xml
+Sitemap: https://end-polio-now-d9210.pages.dev/sitemap.xml
 
 # LLM-friendly site map
 # See /llms.txt

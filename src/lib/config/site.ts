@@ -1,8 +1,8 @@
 // Central SEO / site metadata — single source of truth for Google, AI crawlers and social cards.
 // Update `url` to your production domain when deploying.
 export const SITE = {
-  // Canonical production URL — change to your deployed domain.
-  url: "https://d9210-endpolio.org",
+  // Canonical production URL — Cloudflare Pages deployed domain
+  url: "https://end-polio-now-d9210.pages.dev",
   name: "End Polio Now — Rotary District 9210",
   shortName: "End Polio Now D9210",
   // Primary SEO title (homepage). Other pages append " — District 9210"
