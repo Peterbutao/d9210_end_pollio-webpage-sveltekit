@@ -57,7 +57,21 @@
     <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6">
       <div class="grid gap-6 md:grid-cols-2">
         {#each PROJECTS as project (project.title)}
-          <article class="flex flex-col rounded-sm bg-card p-6 shadow-md transition-shadow hover:shadow-xl sm:p-8">
+          <article class="flex flex-col overflow-hidden rounded-sm bg-card shadow-md transition-shadow hover:shadow-xl">
+            {#if (project as any).image}
+              <a href={(project as any).sources?.[0] ?? '#'} target="_blank" rel="noopener noreferrer" class="block overflow-hidden">
+                <img
+                  src={(project as any).image}
+                  alt={(project as any).imageAlt ?? project.title}
+                  width="800"
+                  height="450"
+                  loading="lazy"
+                  class="h-48 w-full object-cover transition-transform duration-300 hover:scale-[1.02]"
+                  onerror={(e) => ((e.currentTarget as HTMLImageElement).src = '/VAC.webp')}
+                />
+              </a>
+            {/if}
+            <div class="flex flex-1 flex-col p-6 sm:p-8">
             <div class="flex items-center justify-between gap-3">
               <span
                 class="rounded-sm px-2 py-1 text-[11px] font-bold uppercase tracking-wider {TAG_STYLES[project.tag] ??
@@ -96,6 +110,7 @@
                 {/each}
               </div>
             {/if}
+            </div>
           </article>
         {/each}
       </div>

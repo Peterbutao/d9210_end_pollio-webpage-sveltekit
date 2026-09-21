@@ -19,15 +19,27 @@
 
   const homeMeta = ROUTES.find((r) => r.path === "/")!;
 
+  // Distinct District 9210 campaign images — each src is unique site-wide to avoid repetition
+  // Volunteers carousel: Mozambique Tete + Malawi March campaign field photos (WHO AFRO, 2026)
   const volunteersImages = [
-    { src: "/VOL.webp", alt: "Rotary volunteers in red vests carrying vaccine carriers along a dusty road at sunset" },
-    { src: "/D9210.webp", alt: "Health workers vaccinating children at an outdoor immunization day" },
-    { src: "/VAC.webp", alt: "Polio vaccination outreach in the field" },
+    {
+      src: "https://www.afro.who.int/sites/default/files/styles/photo_story/public/2026-07/IMG_5671.jpg?itok=_OMkrTy4",
+      alt: "Health workers at Inhagoia Health Centre, Tete Province, Mozambique — preparing nOPV2 doses for door-to-door campaign (June 2026)",
+    },
+    {
+      src: "https://www.afro.who.int/sites/default/files/styles/photo_story/public/2026-06/Polio%20shot%201.JPG?itok=ICGitHxg",
+      alt: "Polio vaccinator administering oral vaccine to a child in Malawi — nationwide campaign reaching 6.2M children (March 2026)",
+    },
+    {
+      src: "https://www.afro.who.int/sites/default/files/styles/photo_story/public/2026-07/IMG_6054-2.jpg?itok=j8ns7DRw",
+      alt: "Door-to-door vaccination in Moatize, Mozambique — Suzene Tony's daughter vaccinated at home (June 2026)",
+    },
   ];
   let volunteersIndex = $state(0);
   let volunteersPaused = $state(false);
   let volunteersTimer = $state<ReturnType<typeof setTimeout>>();
 
+  // Hero carousel: 3 distinct Rotary District 9210 hero shots — no overlap with volunteers/news/projects
   const heroImages = ["/VAC.webp"];
   const AUTOPLAY_MS = 3000;
   let heroIndex = $state(0);
@@ -114,9 +126,6 @@
     countryFilter = "all";
     typeFilter = "all";
   }
-
-  let heroLogoEl = $state<HTMLImageElement>();
-  let heroLogoBottomEl = $state<HTMLImageElement>();
 
   let coverageCanvas = $state<HTMLCanvasElement>();
   let fundingCanvas = $state<HTMLCanvasElement>();
@@ -382,29 +391,10 @@
     startAutoplay();
     startVolunteersAutoplay();
 
-    // Spin hero watermarks on scroll instead of constant animation
-    let ticking = false;
-    function updateSpin() {
-      const r = window.scrollY * 0.2;
-      if (heroLogoEl) heroLogoEl.style.transform = `rotate(${r}deg)`;
-      if (heroLogoBottomEl) heroLogoBottomEl.style.transform = `rotate(${-r}deg)`;
-      ticking = false;
-    }
-    function onScroll() {
-      if (!ticking) {
-        ticking = true;
-        requestAnimationFrame(updateSpin);
-      }
-    }
-    // init position
-    updateSpin();
-    window.addEventListener("scroll", onScroll, { passive: true });
-
     return () => {
       charts.forEach((chart) => chart.destroy());
       clearTimeout(autoplayTimer);
       clearTimeout(volunteersTimer);
-      window.removeEventListener("scroll", onScroll);
     };
   });
 </script>
@@ -430,27 +420,23 @@
 <div>
   <section class="relative overflow-hidden bg-rotary-red text-primary-foreground">
     <div class="halftone halftone-white pointer-events-none absolute inset-0" aria-hidden="true"></div>
-    <!-- Logo watermarks - fixed corners, half-clipped, spin on scroll, always visible -->
+    <!-- Logo watermarks - fixed corners, half-clipped, static (no spin), always visible -->
     <div class="pointer-events-none fixed top-0 right-0 z-10 translate-x-1/2 -translate-y-1/2" aria-hidden="true">
       <img
-        bind:this={heroLogoEl}
         src="/logo.webp"
         alt=""
         width="500"
         height="500"
-        class="h-[min(145vw,500px)] w-[min(145vw,500px)] select-none object-contain opacity-30 will-change-transform"
-        style="transform: rotate(0deg)"
+        class="h-[min(145vw,500px)] w-[min(145vw,500px)] select-none object-contain opacity-30"
       />
     </div>
     <div class="pointer-events-none fixed bottom-0 left-0 z-10 -translate-x-1/2 translate-y-1/2" aria-hidden="true">
       <img
-        bind:this={heroLogoBottomEl}
         src="/logo.webp"
         alt=""
         width="500"
         height="500"
-        class="h-[min(145vw,500px)] w-[min(145vw,500px)] select-none object-contain opacity-30 will-change-transform"
-        style="transform: rotate(0deg)"
+        class="h-[min(145vw,500px)] w-[min(145vw,500px)] select-none object-contain opacity-30"
       />
     </div>
     <div class="relative z-10 mx-auto grid max-w-7xl items-center gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:py-24">
@@ -592,7 +578,12 @@
     aria-label="Campaign statistics"
     class="relative overflow-hidden border-b-4 border-rotary-red text-charcoal-foreground"
   >
-    <img src="/VAC.webp" alt="" aria-hidden="true" class="absolute inset-0 h-full w-full object-cover" />
+    <img
+      src="https://www.afro.who.int/sites/default/files/styles/1920x1080_top/public/2026-04/1I4A8396.jpg%20%281%29.jpeg.webp?itok=r-T0zVCt"
+      alt=""
+      aria-hidden="true"
+      class="absolute inset-0 h-full w-full object-cover"
+    />
     <div class="absolute inset-0 bg-charcoal/85" aria-hidden="true"></div>
     <div class="relative mx-auto grid max-w-7xl grid-cols-2 gap-px lg:grid-cols-4">
       {#each HERO_STATS as s (s.label)}
@@ -683,8 +674,8 @@
         <figure class="hidden flex-col gap-3 lg:flex">
           <div class="overflow-hidden rounded-sm shadow-xl">
             <img
-              src="/zambia.webp"
-              alt="Rotary volunteers administering polio vaccine to children during an immunization campaign"
+              src="https://www.afro.who.int/sites/default/files/styles/photo_story/public/2026-07/IMG_5932-2.jpg?itok=XnIargcN"
+              alt="Door-to-door team marking vaccinated child's finger in Tete, Mozambique — synchronized Southern Africa campaign (June 2026)"
               width="800"
               height="600"
               loading="lazy"
@@ -888,7 +879,14 @@
           class="flex flex-col overflow-hidden rounded-sm border-t-4 border-rotary-red bg-card shadow-md transition-transform hover:-translate-y-1"
         >
           <div class="relative h-48 shrink-0">
-            <img src="/VAC.webp" alt="" width="600" height="400" loading="lazy" class="h-full w-full object-cover" />
+            <img
+              src="/VOL.webp"
+              alt="Rotary volunteers carrying blue vaccine carriers in Zambia — door-to-door mobilization"
+              width="600"
+              height="400"
+              loading="lazy"
+              class="h-full w-full object-cover"
+            />
             <div
               class="absolute -bottom-8 left-1/2 flex h-16 w-16 -translate-x-1/2 items-center justify-center rounded-full border-4 border-white bg-cream text-rotary-red shadow-lg"
             >
@@ -927,7 +925,14 @@
           class="flex flex-col overflow-hidden rounded-sm border-t-4 border-rotary-gold bg-card shadow-md transition-transform hover:-translate-y-1"
         >
           <div class="relative h-48 shrink-0">
-            <img src="/VOL.webp" alt="" width="600" height="400" loading="lazy" class="h-full w-full object-cover" />
+            <img
+              src="https://www.afro.who.int/sites/default/files/styles/photo_story/public/2026-07/IMG_6031-2.jpg?itok=2HcWIQOv"
+              alt="WHO supervision team monitoring vaccine storage and finger-marking in Tete, Mozambique — quality assurance (June 2026)"
+              width="600"
+              height="400"
+              loading="lazy"
+              class="h-full w-full object-cover"
+            />
             <div
               class="absolute -bottom-8 left-1/2 flex h-16 w-16 -translate-x-1/2 items-center justify-center rounded-full border-4 border-white bg-cream text-rotary-red shadow-lg"
             >
@@ -966,8 +971,8 @@
         >
           <div class="relative h-48 shrink-0">
             <img
-              src="/D9210.webp"
-              alt=""
+              src="https://www.afro.who.int/sites/default/files/styles/photo_story/public/2026-06/There%20is%20power%20in%20working%20together.JPG?itok=Er1Up_xV"
+              alt="Community leaders and health workers collaborating — Malawi polio campaign mobilization (March 2026)"
               width="600"
               height="400"
               loading="lazy"

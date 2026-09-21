@@ -18,7 +18,9 @@
   <link rel="manifest" href="/manifest.json" />
   <!-- Preload critical LCP images (hero + OG) — WebP with JPEG fallback -->
   <link rel="preload" as="image" href="/og-image.webp" type="image/webp" fetchpriority="high" />
-  <link rel="preload" as="image" href="/VAC.webp" type="image/webp" fetchpriority="high" />
+  <link rel="preload" as="image" href="/hero-caro(1).webp" type="image/webp" fetchpriority="high" />
+  <link rel="preload" as="image" href="/hero-caro(2).webp" type="image/webp" fetchpriority="high" />
+  <link rel="preconnect" href="https://www.afro.who.int" crossorigin="anonymous" />
   <!-- AI / LLM discovery -->
   <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-friendly site map" />
   <link rel="alternate" type="application/xml" href="/sitemap.xml" title="Sitemap" />

@@ -80,7 +80,8 @@ export const NEWS = [
     topic: "Immunization" as const,
     link:
       "https://www.afro.who.int/countries/malawi/photo-story/power-science-health-malawis-milestones-transforming-lives",
-    image: "/VAC.webp",
+    image:
+      "https://www.afro.who.int/sites/default/files/styles/photo_story/public/2026-06/Polio%20cover%201.JPG?itok=61dN2xmo",
   },
   {
     slug: "zambia-first-polio-round-april-2026",
@@ -118,7 +119,8 @@ export const NEWS = [
     topic: "Immunization" as const,
     link:
       "https://www.afro.who.int/photo-story/two-drops-confidence-communities-and-healthcare-professionals-join-forces-protect?country=Mozambique&name=Mozambique",
-    image: "/VOL.webp",
+    image:
+      "https://www.afro.who.int/sites/default/files/styles/photo_story/public/2026-07/IMG_5694.jpg?itok=wnucskAz",
   },
   {
     slug: "mozambique-polio-campaign-july-2026",
@@ -130,7 +132,8 @@ export const NEWS = [
     topic: "Awareness" as const,
     link:
       "https://www.afro.who.int/countries/mozambique/news",
-    image: "/D9210.webp",
+    image:
+      "https://www.afro.who.int/sites/default/files/styles/photo_story/public/2026-07/IMG_5932-2.jpg?itok=XnIargcN",
   },
   {
     slug: "zimbabwe-synchronized-polio-campaigns-2026",
@@ -155,7 +158,8 @@ export const NEWS = [
     topic: "Partnerships" as const,
     link:
       "https://www.afro.who.int/countries/zimbabwe/news/united-against-polio-zimbabwe-strengthens-regional-immunity-through-synchronized-vaccination",
-    image: "/zambia.webp",
+    image:
+      "https://www.afro.who.int/sites/default/files/styles/photo_story/public/2026-07/IMG_6047-2.jpg?itok=Wn5kWL8S",
   },
 ] as const;
 
@@ -174,6 +178,9 @@ export const PROJECTS = [
       "https://www.afro.who.int/countries/malawi/news/malawi-launches-second-round-polio-vaccination-campaign",
       "https://www.afro.who.int/countries/malawi/photo-story/power-science-health-malawis-milestones-transforming-lives",
     ],
+    image:
+      "https://www.afro.who.int/sites/default/files/styles/photo_story/public/2026-06/Polio%20cover%201.JPG?itok=61dN2xmo",
+    imageAlt: "Malawi nationwide polio campaign — health workers reaching 6.2M children across all districts (March 2026)",
   },
   {
     title: "Southern Africa Regional Polio Outbreak Response (Zambia, Zimbabwe, Mozambique, Malawi)",
@@ -187,6 +194,9 @@ export const PROJECTS = [
       "https://www.afro.who.int/countries/zambia/news/zambia-undertakes-second-round-polio-vaccination-campaign-protect-every-child-against-polio",
       "https://www.healthcaremea.com/2026/07/24/zimbabwe-completes-three-round-polio-vaccination-drive-to-curb-cross-border-virus-spread/",
     ],
+    image:
+      "https://www.afro.who.int/sites/default/files/styles/1920x1080_top/public/2026-04/235A3153.JPG.webp?itok=EwJlZbCi",
+    imageAlt: "Zambia launches nationwide polio campaign at University Teaching Hospital, Lusaka — 3.7M children targeted (April 2026)",
   },
   {
     title: "World Polio Day 2025 – End Polio Advocacy and Fundraising",
@@ -199,6 +209,8 @@ export const PROJECTS = [
       "https://www.rotary.org/our-work/ending-polio",
       "https://polioeradication.org/news/global-leaders-pledge-us-1-9-billion-in-abu-dhabi-to-end-polio-and-protect-children-worldwide/",
     ],
+    image: "/hero-caro(3).webp",
+    imageAlt: "Rotary District 9210 World Polio Day advocacy walk — End Polio Now banner",
   },
   {
     title: "Polio Awareness in Schools – Nampula, Mozambique",
@@ -210,6 +222,9 @@ export const PROJECTS = [
     sources: [
       "https://www.afro.who.int/photo-story/two-drops-confidence-communities-and-healthcare-professionals-join-forces-protect",
     ],
+    image:
+      "https://www.afro.who.int/sites/default/files/styles/photo_story/public/2026-07/IMG_6054-2.jpg?itok=j8ns7DRw",
+    imageAlt: "Door-to-door team visits homes in Moatize, Tete — school and community awareness for polio (June 2026)",
   },
   {
     title: "Lilongwe District Polio Project Showcase 2025",
@@ -221,6 +236,9 @@ export const PROJECTS = [
     sources: [
       "https://www.afro.who.int/countries/malawi/news/together-every-child-malawis-journey-toward-polio-free-future",
     ],
+    image:
+      "https://www.afro.who.int/sites/default/files/styles/photo_story/public/2026-06/There%20is%20power%20in%20working%20together.JPG?itok=Er1Up_xV",
+    imageAlt: "Malawi health workers and community leaders collaborating after nationwide campaign — Lilongwe showcase",
   },
   {
     title: "Manicaland (Mutare) Polio Vaccination Activities",
@@ -234,6 +252,9 @@ export const PROJECTS = [
       "https://vicfallslive.co.zw/health-ministry-rolls-out-polio-vaccination-campaign/",
       "https://www.afro.who.int/countries/zimbabwe/publication/zimbabwes-expanded-programme-immunization-epi-2025-annual-bulletin",
     ],
+    image:
+      "https://www.afro.who.int/sites/default/files/styles/1920x1080_top/public/2026-07/DSC_2404_0.JPG.webp?itok=Nq5AjF30",
+    imageAlt: "Zimbabwe synchronized vaccination — health worker administering nOPV2 in Harare (July 2026)",
   },
   {
     title: "Lake Malawi Shoreline Polio Outreach",
@@ -246,6 +267,9 @@ export const PROJECTS = [
       "https://www.afro.who.int/countries/malawi/photo-story/reaching-every-last-child-polio-vaccine-vaccinator-experience",
       "https://www.afro.who.int/countries/malawi/news/two-friends-two-drops-one-promise-villages-hope-against-polio",
     ],
+    image:
+      "https://www.afro.who.int/sites/default/files/styles/photo_story/public/2026-06/Polio%20shot%201.JPG?itok=ICGitHxg",
+    imageAlt: "Polio vaccinator reaching children along Lake Malawi shoreline communities",
   },
   {
     title: "Tete Corridor Cross-Border Polio Activities",
@@ -258,6 +282,9 @@ export const PROJECTS = [
       "https://www.afro.who.int/photo-story/two-drops-confidence-communities-and-healthcare-professionals-join-forces-protect",
       "https://www.healthcaremea.com/2026/07/24/zimbabwe-completes-three-round-polio-vaccination-drive-to-curb-cross-border-virus-spread/",
     ],
+    image:
+      "https://www.afro.who.int/sites/default/files/styles/photo_story/public/2026-07/IMG_5694.jpg?itok=wnucskAz",
+    imageAlt: "Vaccinator Argélia Cardoso Sainete at Cateme Health Unit, Tete Corridor — community confidence building (June 2026)",
   },
 ] as const;
 

@@ -7,11 +7,28 @@
 
   const meta = ROUTES.find((r) => r.path === "/about")!;
 
+  // Distinct WHO AFRO 2026 campaign images — one per District 9210 country to avoid local repetition
   const aboutImages = [
-    // { src: "/images/volunteers.jpg", alt: "Health workers vaccinating children at an outdoor immunization day" },
-    // { src: "/VOL.webp", alt: "Rotary volunteers in red vests carrying vaccine carriers at sunset" },
-    { src: "/VAC.webp", alt: "Polio vaccination campaign in the field" },
-    // { src: "/hero-caro(2).webp", alt: "District 9210 campaign field activity" },
+    {
+      src: "https://www.afro.who.int/sites/default/files/styles/1920x1080_top/public/2026-04/1I4A8396.jpg%20%281%29.jpeg.webp?itok=r-T0zVCt",
+      alt: "WHO Malawi Representative vaccinating a child at Kabudula Community Hospital — Malawi second round (April 2026)",
+    },
+    {
+      src: "https://www.afro.who.int/sites/default/files/styles/photo_story/public/2026-07/IMG_6047-2.jpg?itok=Wn5kWL8S",
+      alt: "Argélia Cardoso Sainete, vaccinator at Cateme Health Unit, Tete Province, Mozambique",
+    },
+    {
+      src: "https://www.afro.who.int/sites/default/files/styles/1920x1080_top/public/2026-07/Polio%20Launch_0.jpg.webp?itok=a6aubvCZ",
+      alt: "Zambia launches final polio round at Lusaka University Teaching Hospital — targeting 3.9M children (July 2026)",
+    },
+    {
+      src: "https://www.afro.who.int/sites/default/files/styles/photo_story/public/2026-07/IMG_6031-2.jpg?itok=2HcWIQOv",
+      alt: "WHO supervision in Tete checking vaccine storage and finger-marking — quality assurance (June 2026)",
+    },
+    {
+      src: "/D9210.webp",
+      alt: "Rotary District 9210 End Polio Now community mobilization",
+    },
   ];
   const ABOUT_AUTOPLAY_MS = 3000;
   let aboutIndex = $state(0);
